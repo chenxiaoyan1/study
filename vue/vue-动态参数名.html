@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" >
+        <span v-bind:[attributename]="'attr'">动态传参</span>
+        <button v-on:click="handleChangeAttr">click</button>
+     
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            attributename:"title"//这个key要全部小写，包含大写字母会有问题
+        },
+        methods:{  
+            handleChangeAttr:function(){
+                this.attributename = "class"
+            }
+        }
+    })
+
+</script>
+</html>
