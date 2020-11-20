@@ -7,17 +7,10 @@ class MVue{
             this.$el =  this.ifElement(this.$el)?this.$el:document.querySelector(this.$el)
         }
         new Compile(this.$el,this);
-
-
     }
-
-
     ifElement(el){
         return el.nodeType === 1
     }
-
-
-
 }
 
 class Compile{
@@ -27,19 +20,13 @@ class Compile{
         //1、文档片段对象
         var fragment =  document.createDocumentFragment();
         this.element2Fragment(this.$el,fragment);
-            //2、编译el
+        //2、编译el
         this.compile(fragment)
-
-
-
-
         //3、将文档碎片对象添加进el中，页面显示
         this.$el.appendChild(fragment)
-
     }
     compile(fragment){
         [...fragment.childNodes].forEach(i=>{
-
             if(this.ifElement(i)){
                 //元素节点
                 this.compileElement(i)
@@ -47,17 +34,13 @@ class Compile{
                 //文本节点
                 this.compileText(i)
             }
-
             //递归遍历
             if(i.childNodes&& i.childNodes.length){
                 this.compile(i)
             }
-
-
         })
     }
     compileElement(element){
-        // console.log(element);
         //编译指令
         [...element.attributes].forEach(j=>{//v-text="msg",v-html="html",type="type"
             let {name,value} = j//v-text,msg
@@ -68,17 +51,12 @@ class Compile{
         })
     }
     compileText(textNode){
-        console.log(textNode)
         let text = textNode.nodeValue;
-        let  [,expr1,] = text.split(/{{|}}/);
-      // let   val = text.replace(/\{\{(.+?)\}\}/g, (...args) => {
-      //       return this.getVal(args[1]);
-      //   })
-
-        if(expr1){
-            //编译{{}}类型
-            this.compileDirective["text"](textNode,expr1);
-        }
+        //这里有点神
+        let  val = text.replace(/\{\{(.+?)\}\}/g, (...args) => {
+            return this.getVal(args[1]);
+        })
+        updater.textUpdater(textNode,val)
     }
     ifElement(el){
         return el.nodeType === 1
