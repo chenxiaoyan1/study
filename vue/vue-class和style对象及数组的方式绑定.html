@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .active{
+        color:red
+    }
+    .big{
+        font-weight: bold;
+    }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <span :class="{active:isActive,big:isBig}">class-对象方式绑定</span>
+        <button @click="handleClick">click</button>
+        <br>
+        <span :class="[activeClass,bigClass]">class-数组方式绑定</span>
+        <br>
+        <span :style="{color:'green',fontSize:'30px'}">style-对象方式绑定</span>
+        <span :style="[baseStyle,otherStyle]">style-数组方式绑定</span>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            isActive:false,
+            isBig:false,
+            activeClass:"active",
+            bigClass:"big",
+            baseStyle:{
+                color:'green',
+                fontSize:'30px'
+            },
+            otherStyle:{
+                fontWeight:'bold'
+            }
+        },
+        methods:{
+            handleClick:function () {
+                this.isActive = !this.isActive
+                this.isBig=!this.isBig
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--<script src="./vue源码.js"></script>-->
+<script src="compile.js"></script>
+<body>
+    <div id="app">
+<!--        comment-->
+        <span>{{person.tom.name}}--{{msg}}</span>
+        <span>{{msg}}</span>
+        <p v-text="msg">
+
+        </p>
+        <div>
+            <h1 v-text="msg"></h1>
+        </div>
+        <p v-text="person.tom.name"></p>
+        <div v-html="htmlStr"></div>
+        <input type="text" v-model="msg">
+
+    </div>
+</body>
+<script>
+    var vm = new MVue({
+        el:"#app",
+        data:{
+            msg:"hello",
+            person:{
+                tom:{
+                    name:"tom"
+                }
+            },
+            htmlStr:"<h1>这是html</h1>"
+        }
+    })
+</script>
+</html>
