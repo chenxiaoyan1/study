@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="MVUE.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="p1">
+        <p class="c1">c1</p>
+        <p class="c2">
+            <span>c22</span>
+        </p>
+    </div>
+    <p class="p2"></p>
+    <span>这是span</span>
+</div>
+<script>
+    var vm = new MVUE({
+        el:"#app",
+        data:{
+            msg:"hello vue",
+            name:{
+                firstName:"chen",
+                lastName:"xiaoyan"
+            }
+        }
+    })
+</script>
+<!--
+在vue中使用了二次提交的设计结构
+页面中DOM和虚拟DOM是一一对应的
+先由AST和数据生成VNode(新的VNode，有render完成)
+将旧的VNode和新的VNode比较（diff）,更新(update)
+每次改变数据的时候，都会生成一个新的VNode,新的VNode和页面的VNode进行比较，相同的忽略，不同就更新到页面的VNode上，新的VNode是包含新数据的，缓存的是抽象语法树（AST）
+
+
+
+
+-->
+</body>
+</html>
