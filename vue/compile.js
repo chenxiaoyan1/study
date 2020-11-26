@@ -17,6 +17,7 @@ class Compile{
     constructor(el,vm) {
         this.$el = el
         this.$vm = vm;
+        new Observe(this.$vm.$data)
         //1、文档片段对象
         var fragment =  document.createDocumentFragment();
         this.element2Fragment(this.$el,fragment);
@@ -81,10 +82,17 @@ class Compile{
     compileDirective={
         text: (element,expr)=> {
             const value = this.getVal(expr)
+            new Watcher(function(newVal){
+                updater.textUpdater(element,newVal)
+            })
             updater.textUpdater(element,value)
         },
         html: (element,expr)=> {
             const value = this.getVal(expr)
+            debugger
+            new Watcher(function(newVal){
+                updater.htmlUpdater(element,newVal)
+            })
             updater.htmlUpdater(element,value)
         },
         model: (element,expr)=> {

@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <!--<script src="./vue源码.js"></script>-->
+<script src="observe.js"></script>
 <script src="compile.js"></script>
 <body>
     <div id="app">
@@ -27,14 +28,20 @@
     var vm = new MVue({
         el:"#app",
         data:{
+            htmlStr:"<h1>这是html</h1>",
             msg:"hello",
+            nullVal:null,
             person:{
                 tom:{
-                    name:"tom"
+                    name:"tom123"
                 }
-            },
-            htmlStr:"<h1>这是html</h1>"
+            }
+
         }
     })
+
+    //1、Object.defineProerty 方法get为什么陷入死循环，各个属性值的意义
+    //这样就能避免null判断为object的情况了，typeof null=object  typeof undefined = undefined
+    //2、判断一个对象是否为object if(data[key] && typeof data[key] == "object"){
 </script>
 </html>
