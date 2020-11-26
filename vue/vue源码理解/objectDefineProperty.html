@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let data = {
+        name:"chen",
+        age:12,
+        parent:{
+            mom:"mama",
+            father:"baba"
+        }
+    }
+
+
+    function defineReactive(obj,key,value,enumerable){
+        Object.defineProperty(obj,key,{
+            enumerable:enumerable,//是否可枚举
+            get() {
+                console.log(`get方法：${key}---${value}`)
+                return value
+            },
+            set(v) {
+                console.log(`set方法：${key}---${value}`)
+                value = v
+            }
+        })
+    }
+    function generateDefineProperties(data){
+        Object.keys(data).forEach(key=>{
+            if(data[key] && typeof data[key] =='object'){
+                generateDefineProperties(data[key])
+            }else{
+                defineReactive(data,key,data[key],true)
+            }
+        })
+    }
+    generateDefineProperties(data)
+
+    // let temp =data.age//这里不会走get方法，因为此时还没有添加defineProperty
+    // Object.defineProperty(data,"age",{
+    //     configurable:true,
+    //     enumerable:true,//是否可枚举
+    //     get() {
+    //         debugger
+    //         return temp
+    //     },
+    //     set(v) {
+    //         temp=v
+    //         return v
+    //     }
+    // })
+</script>
+</body>
+</html>
