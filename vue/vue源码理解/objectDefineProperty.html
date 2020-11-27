@@ -12,8 +12,15 @@
         age:12,
         parent:{
             mom:"mama",
-            father:"baba"
-        }
+            father:"baba",
+            children:[
+                {name:"tom"}
+            ]
+        },
+        course:[
+            {name:"chinese",score:90},
+            {name: "math",score: 150}
+        ]
     }
 
 
@@ -26,19 +33,71 @@
             },
             set(v) {
                 console.log(`set方法：${key}---${value}`)
+                // generateDefineProperties(v)
+                if(v && typeof v =='object'){
+                    if(Array.isArray(v)){
+                        //是数组，拦截数组的方法，走自定义的方法
+                        v.__proto__ = array_methods
+                        v.forEach(k=>{
+                            generateDefineProperties(k)
+                        })
+                    }else{
+                        //是对象
+                        generateDefineProperties(v)
+                    }
+                }
                 value = v
             }
         })
     }
     function generateDefineProperties(data){
         Object.keys(data).forEach(key=>{
+            defineReactive(data,key,data[key],true)
             if(data[key] && typeof data[key] =='object'){
-                generateDefineProperties(data[key])
-            }else{
-                defineReactive(data,key,data[key],true)
+                if(Array.isArray(data[key])){
+                    //是数组，拦截数组的方法，走自定义的方法
+                    data[key].__proto__ = array_methods
+                    data[key].forEach(k=>{
+                        generateDefineProperties(k)
+                    })
+                }else{
+                    //是对象
+                    generateDefineProperties(data[key])
+                }
             }
         })
     }
+
+
+    //数组具有响应式的方法
+    let ARRAY_METHODS =[
+        "push",
+        "pop",
+        "shift",
+        "unshift",
+        "reverse",
+        "sort",
+        "splice"
+    ]
+
+    //创建一个对象，该对象具有Array.prototype的方法
+    let array_methods = Object.create(Array.prototype)
+
+    //给array_methods这个对象上面定义的方法，所以当array_methods.push(3)时他会在对象本身上看是否会有push方法，发现有
+    //就会执行对象的push方法，若没有则看Array.prototype上是否有，有则执行，没有则报错
+    ARRAY_METHODS.forEach(m=>{
+        array_methods[m] = function(){
+            console.log(`走了此${m}方法`)
+            //处理数组响应式化（处理push,pop等方法的响应化）
+            generateDefineProperties(arguments)
+
+            let returnInfo =  Array.prototype[m].apply(this,arguments)
+            return returnInfo
+        }
+    })
+
+
+
     generateDefineProperties(data)
 
     // let temp =data.age//这里不会走get方法，因为此时还没有添加defineProperty
