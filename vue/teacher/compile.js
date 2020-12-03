@@ -81,6 +81,7 @@ const compileUtils = {
 
 class Compile {
     constructor(el, vm) {
+        debugger
         this.el = this.isElementNode(el) ? el : document.querySelector(el);
         this.vm = vm;
 

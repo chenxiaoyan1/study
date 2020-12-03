@@ -43,6 +43,16 @@ vue2中的缺陷，数组发生变化，设置length没法通知（vue3中使用
 3、定义扩展的功能
 4、调用临时的那个函数
 
+在vue中提供一个构造函数Watcher
+Watcher会有一些方法：
+get:用来计算或执行处理函数
+update：公共的外部方法，该方法会触发内部的run方法
+run：运行，用来判断内部是使用异步运行还是同步运行，这个方法最终会调用内部的get方法
+cleanupDep:简单理解为清除队列
+
+参数：vm vue实例 object
+     expOrfn String|Function 如果是渲染watcher，传入的是渲染函数，如果是计算watcher，传入的是路径表达式
+
 
 -->
 </body>
