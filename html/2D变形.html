@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D变形</title>
+    <style>
+        @keyframes degChange {
+            0%{
+                transform:  translate(-50%) rotate(0deg);
+            }
+            100%{
+                transform: translate(-50%) rotate(360deg) ;
+            }
+        }
+        @keyframes roll {
+            from {
+                transform: translate(0px,0px ) rotate(0deg);
+            }
+            to{
+                transform: translate(314px,0px) rotate(360deg);
+            }
+        }
+        .c2{
+            background-color: black;
+            height: 1px;
+            transform: scale(1,0.5);
+        }
+        .d2{
+            background-color: yellowgreen;
+        }
+        .p1{
+            transform: translate(10px,10px);
+        }
+        .d3c{
+            height: 1px;
+            background-color: greenyellow;
+            transform: rotate(45deg);
+        }
+        .d4{
+            background-color: lightcyan;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            position: relative;
+        }
+        .d4c{
+            height: 1px;
+            width: 80%;
+            background-color: #000;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            animation: degChange 5s linear  0s infinite ;
+        }
+        .d5{
+            height: 100px;/*周长314*/
+            width: 100px;
+            border-radius: 50%;
+            text-align: center;
+            background-color: lightgreen;
+            animation: roll 5s linear 0s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>一条高0.5px的线</p>
+        <div class="c2"></div>
+    </div>
+    <div class="d2">
+        <p class="p1">移动 translate</p>
+    </div>
+    <div class="d3">
+        <div class="d3c"></div>
+    </div>
+    <div class="d4">
+        <div class="d4c"></div>
+    </div>
+    <div class="d5">
+        2
+    </div>
+
+</body>
+</html>
