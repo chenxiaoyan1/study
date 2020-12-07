@@ -2,9 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>水平居中</title>
+    <style>
+        p{
+            font-weight: bold;
+        }
+        .d1{
+            text-align: center;
+            height: 500px;
+            background-color: #ccc;
+        }
+        .d1s{
+            background-color: #ccc;
+            height: 100px;
+            line-height: 100px;
+        }
+        .d1s div{
+
+            background-color: lightpink;
+            width: 200px;
+            height: 50px;
+        }
+        .d2{
+            background-color: #ccc;
+            height: 100px;
+        }
+        .d2 .c1{
+            background-color: lightgreen;
+            width: 200px;
+            margin: auto;
+        }
+        .d3,.d4{
+            background-color: #ccc;
+            height: 200px;
+        }
+        .d3 .c1{
+            background-color: lightpink;
+            width: 200px;
+            position: relative;
+            margin: auto;/*relative定位元素水平居中*/
+            text-align: center;
+        }
+        .d4{
+            position: relative;
+        }
+        .d4 .c1{
+            background-color: lightpink;
+            position: absolute;
+            width: 200px;
+            top: 20px;
+            left: 50%;
+            padding: 50px;
+            /*margin-left: -100px;*/
+            transform: translate(-50%,0);
+        }
+        .d5{
+            background-color: #ccc;
+            height: 100px;
+        }
+        .d5 .c1{
+            background-color: lightseagreen;
+            height: 40px;
+            position: relative;
+        }
+        .d5 .c2{
+            background-color: lightpink;
+            height: 40px;
+            position: absolute;
+        }
+
+    </style>
 </head>
 <body>
-$END$
+    <p>字体，行元素，行内块元素水平居中:text-align:center</p>
+    <div class = "d1">
+        <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=241975483,2397978038&fm=26&gp=0.jpg" alt="">
+    </div>
+    <p>字体，行元素，行内块元素(img除外)垂直居中:line-height:高度</p>
+    <div class = "d1s">
+        <span>sd</span>
+    </div>
+    <p>标准流中的块元素水平居中: margin: auto;</p>
+    <div class="d2">
+        <div class="c1">标准流中的块元素</div>
+    </div>
+    <p>相对定位relative水平居中margin:auto</p>
+    <div class="d3">
+        <div class="c1">相对定位relative水平居中margin:auto</div>
+        <div class="c2">123</div>
+    </div>
+    <p>绝对定位absolute水平居中:
+    <ul>
+        <li>1)left:50%;margin-left:该标签的宽(padding左右+border左右+width)/2</li>
+        <li>2)left:50%;transform:translate(-50%,0)></li></ul></p>
+    <div class="d4">
+        <div class="c1">绝对定位absolute水平居中</div>
+        <div class="c2">123456732451413431248909876544321</div>
+    </div>
+    <p>定位后元素模式转换</p>
+    <div class="d5">
+        <div class="c1">relative 定位后模式不会变化</div>
+        <div class="c2">absolute定位后模式转换为行内块</div>
+    </div>
 </body>
 </html>
