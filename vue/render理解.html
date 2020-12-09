@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>render理解</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <heading></heading>
+        <heading></heading>
+        <heading></heading>
+        <heading-render title="render"></heading-render>
+
+
+
+    </div>
+</body>
+<script>
+    Vue.component('heading',{
+        data:function(){
+            return {val:"hello head"}
+        },
+        template:"<h1>{{val}}</h1>"
+    })
+    Vue.component('heading-render',{
+        data:function(){
+            return {
+                val:"hello heading-render"
+            }
+        },
+        props:{
+            title:String
+        },
+        render:function(createElement){
+            const vnode = createElement(
+                "h1",
+                this.title
+            )
+            console.log(vnode)
+            //render返回一个虚拟DOM
+            return vnode
+        }
+    })
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"hello"
+        }
+    })
+</script>
+</html>
