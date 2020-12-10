@@ -21,6 +21,10 @@
     import KForm from "./KForm";
     import KFormItem from "./KFormItem";
     import KInput from "./KInput";
+    import create from "../../../util/create";
+    import notice from "../notice/notice";
+
+
 
     export default {
         name: "index",
@@ -50,9 +54,19 @@
             handleSave:function () {
                 this.$refs["ruleForm"].validate(function(valid){
                     if(valid){
-                        alert("submit")
+                        //这是notice的虚拟dom
+                        let noticeVDom = create(notice,{
+                            title:"成功了",
+                            message:"哈哈，校验通过了，可以提交了"
+                        })
+                        noticeVDom.show()
                     }else{
-                        alert("error submit")
+                        // alert("error submit")
+                        let noticeVDom = create(notice,{
+                            title:"失败了",
+                            message:"呜呜，校验失败了，请检查"
+                        })
+                        noticeVDom.show()
                         return false;
                     }
                 })

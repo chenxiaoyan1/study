@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .part{
+            background-color: lightpink;
+            height: 500px;
+            margin-bottom: 100px;
+        }
+    </style>
+</head>
+<body>
+<a href="#part1">跳转到part1</a>
+<a href="#part2">跳转到part2</a>
+<a href="#part3">跳转到part3</a>
+
+<div class="part" id="part1">part1 的内容</div>
+<div class="part" id="part2">part2 的内容</div>
+<div class="part" id="part3">part3 的内容</div>
+</body>
+<script>
+    //hashchange hash改变事件
+    window.addEventListener("hashchange",function(){
+        //hash的值 #part1
+        console.log(window.location.hash)
+    },false)
+</script>
+</html>
