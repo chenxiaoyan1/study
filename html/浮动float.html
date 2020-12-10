@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>浮动float</title>
+    <style>
+        .d1{
+            background-color: #ccc;
+            height: 100px;
+        }
+        
+        .d2{
+            background-color: #ccc;
+            /*overflow: hidden;*/
+        }
+        .d2 .c1{
+            background-color: lightpink;
+            float: left;
+        }
+        .d2 .c2{
+            /*float: right;*/
+            background-color: lightseagreen;
+        }
+    </style>
+</head>
+<body>
+    <div class="d d1">
+        <div class="c1">正常元素</div>
+    </div>
+    <br>
+    <div class="d d2">
+        <div class="c1">浮动元素</div>
+        <div class="c2">123浮动元素后面的元素</div>
+    </div>
+    <div class="d3">123</div>
+
+</body>
+</html>

@@ -9,6 +9,7 @@ class Watcher {
     }
 
     getOldVal() {
+        debugger
         Dep.target = this;
         console.log("getOldVal before")
         const oldVal = compileUtils.getValue(this.expr, this.vm);
@@ -32,6 +33,7 @@ class Dep {
     }
 
     addSub(watcher) {
+        debugger
         this.subs.push(watcher);
     }
 
@@ -44,6 +46,7 @@ class Dep {
 class Observer {
     constructor(data) {
         // this.dep = new Dep()
+        debugger
         this.observer(data)
     }
 

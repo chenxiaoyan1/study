@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @keyframes colorChange {
+            from{
+                background-color: lightgreen;
+                width: 100px;
+            }
+            to {
+                background-color: green;
+                width: 200px;
+            }
+        }
+        .c1{
+            width: 100px;
+            height: 100px;
+            background-color: lightgreen;
+            border: 10px solid red;
+            padding: 20px;
+        }
+        .c1:hover{
+            animation: colorChange 2s ease 0s infinite alternate;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="c1"></div>
+
+</body>
+</html>

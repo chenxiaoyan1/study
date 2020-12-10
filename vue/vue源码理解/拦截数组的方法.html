@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let arr = []
+    console.log(arr)
+    // let a = arr.push(3,2)//返回数组的长度
+    // console.log(a)
+    let ARRAY_METHODS =[
+        "push",
+        "pop",
+        "shift",
+        "unshift",
+        "reverse",
+        "sort",
+        "splice"
+    ]
+
+    //创建一个对象，该对象具有Array.prototype的方法
+    let array_methods = Object.create(Array.prototype)
+    console.log(array_methods)
+    console.log(array_methods.push("1"))//此处走的是Array.prototype的方法
+
+    //给array_methods这个对象上面定义的方法，所以当array_methods.push(3)时他会在对象本身上看是否会有push方法，发现有
+    //就会执行对象的push方法，若没有则看Array.prototype上是否有，有则执行，没有则报错
+    ARRAY_METHODS.forEach(m=>{
+        array_methods[m] = function(){
+            console.log(`走了此${m}方法`)
+            let returnInfo =  Array.prototype[m].apply(this,arguments)
+            return returnInfo
+        }
+    })
+
+    //此时arr的方法查询链：arr--array_methods--Array.prototype
+    arr.__proto__=array_methods
+    arr.push("a")
+
+</script>
+</body>
+</html>

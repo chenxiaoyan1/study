@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+        .d2{
+            width: 100px;
+            border: 1px solid red;
+        }
+        .d1{
+            overflow: hidden;/*溢出的部分隐藏*/
+            white-space:nowrap; /*强制在同一行内显示所有文本*/
+            text-overflow: ellipsis;/*溢出的部分省略号显示*/
+        }
+        .d2{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body>
+<h3>文字一行显示，显示不下省略号显示</h3>
+<div class="d1">
+    这是文字多好ii哦发哈滴哦vu吃点水果的时代嘎还贷款v和
+</div>
+
+<h3>文字多行显示，显示不下省略号显示</h3>
+<div class="d2">
+    这是文字多好ii哦发哈滴哦吃点水果的时代嘎还贷款v和
+</div>
+</body>
+</html>

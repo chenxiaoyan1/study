@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root{
+            --bg:baseline;
+        }
+        div{
+            border: 1px solid red;
+
+        }
+        img {
+            vertical-align: var(--bg);
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1606990722062&di=741ca290465a6aca65ede8b4cada2873&imgtype=0&src=http%3A%2F%2Fa0.att.hudong.com%2F30%2F29%2F01300000201438121627296084016.jpg" alt="">
+    <span>这是文字</span>
+</div>
+<span>点击按钮改变vertical-align的值:</span>
+<br>
+baseline:<input type="radio"  name = "va" onclick="handleClick('baseline')"/>
+<br>
+top:<input type="radio"  name = "va" onclick="handleClick('top')"/>
+<br>
+middle:<input type="radio"  name = "va" onclick="handleClick('middle')"/>
+<br>
+bottom:<input type="radio"  name = "va" onclick="handleClick('bottom')"/>
+
+<script>
+    function handleClick(data){
+        document.body.style.setProperty("--bg", data);
+    }
+
+</script>
+</body>
+</html>

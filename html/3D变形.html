@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D变形</title>
+    <style>
+        @keyframes bianhua {
+            from{
+                transform: rotateX(0deg) ;
+            }
+            to{
+                transform: rotateX(160deg);
+            }
+        }
+        .d{
+            background-color: #ccc;
+            height: 100px;
+            width: 300px;
+            margin-top: 500px;
+            perspective: 200px;
+            animation: bianhua 10s ease 0s;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="d"></div>
+</div>
+</body>
+</html>

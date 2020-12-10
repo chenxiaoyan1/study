@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件模型</title>
+</head>
+<body>
+<p>
+    <pre>
+
+    </pre>
+</p>
+
+<script>
+    var events
+    function event(){
+         events = {}
+        return {
+            on:function (type,handler) {
+               (events[type] = events[type] || []).push(handler)
+            },
+            off:function () {
+                //不传参数，删除所有事件
+                //传1个参数，代表type，删除一个type类型的所有事件
+                //传2个参数,type,handler代表删除某个事件
+                if(arguments.length == 0){
+                    events = {}
+                }else if(arguments.length == 1){
+                    events[arguments[0]] = []
+                }else if(arguments.length >= 2){
+                    events[arguments[0]].forEach((e,index)=>{
+                        if(e === arguments[1]){
+                            events[arguments[0]].splice(index,1)
+                        }
+                    })
+                }
+            },
+            emit:function (type) {
+                if(!events[type]){
+                    return;
+                }
+                events[type].forEach(e=>{
+                    // arguments要去掉第一个参数
+                    e.apply(null,[...arguments].splice(1))
+                })
+            }
+        }
+    }
+
+    var ev = event()
+    function fn(){}
+    ev.on("add",fn)
+    ev.on("add",function(){})
+    console.log(events)
+    ev.off("add",function(){})
+    console.log(events)
+    ev.off("add",fn)
+    console.log(events)
+</script>
+</body>
+</html>

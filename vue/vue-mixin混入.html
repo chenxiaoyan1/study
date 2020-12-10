@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <my-heading></my-heading>
+        <my-component></my-component>
+    </div>
+</body>
+<script>
+    var myMixin = {
+        created:function () {
+            console.log("hello mixin--")
+            //this为对应的组件
+            console.log(this)
+        }
+    }
+    Vue.component("my-heading",{
+        mixins:[myMixin],
+        created:function(){
+            console.log("hello my-heading")
+        },
+        render(h){
+            return h("h1","hahaha")
+        }
+    })
+    Vue.component('my-component',{
+        mixins:[myMixin],
+        created:function(){
+            console.log("hello my-component")
+        },
+        template:'<div>My Component</div>'
+    })
+    var vm = new Vue({
+        data:{
+            msg:"hello mixin"
+        }
+    }).$mount("#app")
+</script>
+</html>

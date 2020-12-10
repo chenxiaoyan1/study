@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        :root{
+            --displayVal:block;
+            --widthVal:50px;
+            --flexDirectionVal:row;
+            --flexWrapVal:nowrap;
+            --justifyContentVal: flex-start;
+            --alignItemsVal:stretch;
+            --alignContentVal:stretch;
+        }
+        .parent{
+            background-color: #ccc;
+            width: 400px;
+            height: 200px;
+            display: var(--displayVal);
+            flex-direction: var(--flexDirectionVal);
+            flex-wrap: var(--flexWrapVal);
+            justify-content: var(--justifyContentVal);
+            align-items: var(--alignItemsVal);
+            align-content: var(--alignContentVal);
+        }
+        .parent div{
+            width: var(--widthVal);
+            height: 50px;
+        }
+        .c1{
+            background-color: #FFC0CB;
+        }
+        .c2{
+            background-color: #FF00FF;
+        }
+        .c3{
+            background-color: #8A2BE2;
+        }
+        .c4{
+            background-color: #87CEEB;
+        }
+        .c5{
+            background-color: #FF6347;
+        }
+        .c6{
+            background-color: #FFA500;
+        }
+        .c7{
+            background-color: #20B2AA;
+        }
+
+        .redFont{
+            font-weight: 700;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="c1">1</div>
+        <div class="c2">2</div>
+        <div class="c3">3</div>
+        <div class="c4">4</div>
+<!--        <div class="c5">5</div>-->
+<!--        <div class="c6">6</div>-->
+<!--        <div class="c7">7</div>-->
+    </div>
+
+    <div>
+        <fieldset>
+            <legend>容器</legend>
+
+            <div>
+                <span class="redFont">display: | </span>
+                <label>block: <input type="radio" value="block" onclick="handleClick(this)" name="display" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> flex: <input type="radio" value="flex" onclick="handleClick(this)" name="display">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+
+            <div>
+                <span class="redFont">flex-direction:| </span>
+                <label>row: <input type="radio" value="row" onclick="handleClickDir(this)" name="flex-direction" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>row-reverse : <input type="radio" value="row-reverse " onclick="handleClickDir(this)" name="flex-direction">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>column : <input type="radio" value="column " onclick="handleClickDir(this)" name="flex-direction">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>column-reverse : <input type="radio" value="column-reverse " onclick="handleClickDir(this)" name="flex-direction">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <div>
+                <span class="redFont">flex-wrap|</span>
+                <label> nowrap : <input type="radio" value="nowrap" onclick="handleClickFlexWrap(this)" name="flex-wrap" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>wrap : <input type="radio" value="wrap" onclick="handleClickFlexWrap(this)" name="flex-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>wrap-reverse : <input type="radio" value="wrap-reverse" onclick="handleClickFlexWrap(this)" name="flex-wrap">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <div>
+                <span class="redFont">justify-content|</span>
+                <label> flex-start : <input type="radio" value="flex-start" onclick="handleClickJustifyContent(this)" name="justify-content" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>flex-end  : <input type="radio" value="flex-end" onclick="handleClickJustifyContent(this)" name="justify-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> center  : <input type="radio" value="center" onclick="handleClickJustifyContent(this)" name="justify-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> space-between : <input type="radio" value="space-between" onclick="handleClickJustifyContent(this)" name="justify-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</label>
+                <label>space-around : <input type="radio" value="space-around" onclick="handleClickJustifyContent(this)" name="justify-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+            <div>
+                <span class="redFont">align-items|</span>
+                <label> flex-start : <input type="radio" value="flex-start" onclick="handleClickAlignItems(this)" name="align-items">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>flex-end : <input type="radio" value="flex-end" onclick="handleClickAlignItems(this)" name="align-items">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> center  : <input type="radio" value="center" onclick="handleClickAlignItems(this)" name="align-items">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>  baseline  : <input type="radio" value="baseline" onclick="handleClickAlignItems(this)" name="align-items">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label>stretch : <input type="radio" value="stretch" onclick="handleClickAlignItems(this)" name="align-items" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+
+            <div>
+                <span class="redFont"> align-content| </span>
+                <label>flex-start: <input type="radio" value="flex-start" onclick="handleClickAlignContent(this)" name="align-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> flex-end: <input type="radio" value="flex-end" onclick="handleClickAlignContent(this)" name="align-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> center: <input type="radio" value="center" onclick="handleClickAlignContent(this)" name="align-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> space-between:<input type="radio" value="space-between" onclick="handleClickAlignContent(this)" name="align-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> space-around:<input type="radio" value="space-around" onclick="handleClickAlignContent(this)" name="align-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                <label> stretch:<input type="radio" value="stretch" onclick="handleClickAlignContent(this)" name="align-content" checked>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>item</legend>
+
+        </fieldset>
+        <fieldset>
+            <legend>子元素宽度调整</legend>
+            <button onclick="handleClickNum('-')">-</button>
+            <input type="number" value="100" id="num" >
+            <button onclick="handleClickNum('+')">+</button>
+            <button onclick="handleClickNum()">确定</button>
+        </fieldset>
+
+
+    </div>
+    <script>
+        function handleClick(e){
+            console.dir(e.value)
+            document.body.style.setProperty("--displayVal", e.value);
+        }
+        function handleClickDir(e){
+            document.body.style.setProperty("--flexDirectionVal", e.value);
+        }
+        function handleClickFlexWrap(e){
+            document.body.style.setProperty("--flexWrapVal", e.value);
+        }
+        function handleClickJustifyContent(e){
+            document.body.style.setProperty("--justifyContentVal", e.value);
+        }
+        function handleClickAlignItems(e){
+            document.body.style.setProperty("--alignItemsVal", e.value);
+        }
+        function handleClickAlignContent(e){
+            document.body.style.setProperty("--alignContentVal", e.value);
+        }
+        function handleClickNum(str){
+            if(str == "+"){
+                document.getElementById("num").value++
+            }else if(str == "-"){
+                document.getElementById("num").value--
+            }else{
+
+            }
+            document.body.style.setProperty("--widthVal", document.getElementById("num").value+"px");
+        }
+
+    </script>
+</body>
+</html>
