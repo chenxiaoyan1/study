@@ -1,6 +1,8 @@
 import Index from "../pages/index";
 import HelloWorld from "../components/HelloWorld";
+import Vue from 'vue'
 import VueRouter from "vue-router";
+Vue.use(VueRouter)
 
 const routes = [
     { path: '/page1', component: Index },

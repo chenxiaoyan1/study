@@ -1,13 +1,18 @@
 <template>
   <div id="app">
-      <router-link to="/page1">Go to Foo</router-link>
-      <router-link to="/page2">Go to Bar</router-link>
-      <router-view></router-view>
+      <krouter-link to="/page1">Go to Foo</krouter-link>
+      <krouter-link to="/page2">Go to Bar</krouter-link>
+      <krouter-view></krouter-view>
+
+<!--      <router-link to="/page1">Go to Foo1</router-link>-->
+<!--      <router-link to="/page2">Go to Bar1</router-link>-->
+<!--      <router-view></router-view>-->
 
   </div>
 </template>
 
 <script>
+
 
 export default {
   name: 'App',
