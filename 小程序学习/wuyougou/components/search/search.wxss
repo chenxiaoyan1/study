@@ -1,0 +1,15 @@
+
+.search{
+  background-color: var(--themeColor);
+  display: flex;
+  height: 60rpx;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.search-item{
+  flex-basis: 98%;
+  background-color: #fff;
+  height: 50rpx;
+  border-radius: 5rpx;
+}

@@ -1,0 +1,60 @@
+image,view,navigator {
+  box-sizing: border-box;
+}
+image{
+  vertical-align: middle;
+}
+swiper {
+  width: 100%;
+  height: calc(100vw*150/330);
+}
+image {
+  width: 100%;
+}
+
+.nav{
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+}
+.nav navigator{
+  flex: 1;
+  height: 150rpx;
+  box-sizing: border-box;
+}
+.nav navigator image{
+  height: 100%;
+}
+
+.floor .floorTitle{
+  width: 100%;
+}
+
+.floor .productList{
+  display: flex;
+}
+.floor .productList .product{
+  flex: 1;
+}
+.floor .productList .product .v1 image{
+ width:100%;
+}
+.floor .productList .v1 image{
+  height: 100%;
+  /* 386*1vm/232*2=height
+  
+  */
+}
+.floor .productList .v2 {
+  padding-left: 5rpx;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.floor .productList .v2 image{
+  flex: 1;
+   height: calc((386*33.33vw)/(232*2));
+}
+.floor .productList .v2 image:last-child{
+  padding-top: 5px;
+}

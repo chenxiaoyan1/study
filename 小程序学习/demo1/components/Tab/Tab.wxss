@@ -1,0 +1,12 @@
+.tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.tab-item {
+  flex:1;
+}
+.active{
+  border-bottom: 10rpx solid red;
+}

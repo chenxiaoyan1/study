@@ -1,0 +1,35 @@
+body {
+  --themeColor: green;
+}
+.p{
+  height: 300vh;
+}
+.p .f{
+  height: 50vh;
+  background-color: #ccc;
+}
+.f .f-item{
+  height: 100rpx;
+  /* width: 15vw; */
+
+}
+.i1{
+  background-color: green;
+}
+.i2{
+  background-color: aquamarine;
+}
+.i3{
+  background-color: Violet;
+}
+.i4{
+  background-color: Orange;
+}
+.i5{
+  background-color: LightCoral;
+}
+
+.btnGroup{
+  position: fixed;
+  bottom: 10rpx;
+}

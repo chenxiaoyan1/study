@@ -1,0 +1,47 @@
+<view class="address">
+<view wx:if="{{!address.userName}}">
+  <button bindtap="handleAddAdress" >添加收货地址</button>
+</view>
+
+<view wx:else>
+  <view>收货人：{{address.userName}} {{address.telNumber}}</view>
+  <view>{{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
+
+</view>
+</view>
+<view class="cert">
+  <view class="cert-title">
+  购物车
+  </view>
+  <view class="cert-content">
+    <view class="cert-item" wx:for="{{cert}}" wx:key="goods_id">
+      <view class="check">
+        <checkbox-group data-goodId="{{item.goods_id}}" bindchange="handleCheckbox">
+        <checkbox value="{{item.goods_id}}"  data-item="{{item}}"></checkbox>
+      </checkbox-group>
+      </view>
+      <view class="cert-item-content">
+        <image mode="widthFix" src="{{item.good.goods_small_logo?item.good.goods_small_logo:'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}"></image>
+        <view class="cert-item-content-info">
+          <view class="item-title">
+          {{item.good.goods_name}}
+          </view>
+          <view class="item-price">
+            <view class="price">
+              ¥{{item.good.goods_price}}
+            </view>
+            <view class="num">
+              <num num="{{item.num}}" goods_id="{{item.good.goods_id}}"
+              bindchangeNum="handleChangeNum"
+              ></num>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cert-price">
+    <view class="allPrice">合计:<text>¥{{allPrice}}</text></view>
+    <view class="allCount" bindtap="handleBuy">结算({{allCount}})</view>
+  </view>
+</view>

@@ -1,0 +1,22 @@
+<view wx:for="{{arr}}" wx:key="id">
+  {{index}}:{{item.name}}
+</view>
+<view wx:for="{{arr[0]}}" wx:for-index="key" wx:for-item="value" wx:key="key">
+{{key}}:{{value}}
+</view>
+<view>------------</view>
+<view wx:if="{{true}}">显示</view>
+<view wx:if="{{false}}">隐藏</view>
+<view hidden="{{false}}">显示</view>
+<view hidden="{{true}}">隐藏</view>
+<view hidden>隐藏</view>
+<view>----双向绑定----</view>
+<view>
+  <input type="text" bindinput="handleInput"/>
+  <button bindtap="handleClick" data-type="{{1}}">+</button>
+  <button bindtap="handleClick" data-type="{{-1}}">-</button>
+</view>
+
+<view>
+  <text>{{num}}</text>
+</view>

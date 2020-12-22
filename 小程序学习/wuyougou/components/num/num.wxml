@@ -1,0 +1,5 @@
+<view class="num">
+  <view class="num-item sub" bindtap="handleSub">-</view>
+  <view class="num-item">{{num}}</view>
+  <view class="num-item add" bindtap="handleAdd">+</view>
+</view>

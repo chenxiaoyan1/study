@@ -1,0 +1,15 @@
+.num{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: center;
+
+}
+.num-item{
+  flex: 1;
+
+}
+.add,.sub{
+  border:1rpx solid #ccc;
+  color: #ccc;
+}

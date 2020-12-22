@@ -1,0 +1,43 @@
+.catalogContent{
+  display: flex;
+}
+.catalogContent{
+  height: calc(100vh - 60rpx);
+}
+.left .active{
+  color: red;
+}
+.catalogContent .left{
+  flex: 2;
+  /* background-color: Violet; */
+ height: 100%;
+ text-align: center;
+}
+.catalogContent .right{
+  flex: 5;
+  /* background-color: LightGreen; */
+  height: 100%;
+}
+
+
+.right-item-title{
+  text-align: center;
+}
+.right-item-content{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.right-item-item{
+  /* 
+  实现多个节点每3个在一行
+   */
+   width: 33.33%;
+   padding: 15rpx;
+   text-align: center;
+}
+.right-item-item image{
+  /* height: 100%; */
+  width: 100%;
+  
+}

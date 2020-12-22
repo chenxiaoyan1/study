@@ -1,0 +1,124 @@
+.my-page{
+  position: relative;
+  background-color: #edece8;
+  overflow: hidden;
+  height: 100vh;
+  color:#666;
+}
+.my-page{
+  overflow-y: auto;
+}
+.my-page .my-content{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.my-info{
+  height: 45vh;
+}
+.my-info .no-login{
+  height: 100%;
+  background-color: var(--themeColor);
+  position: relative;
+}
+.no-login button{
+  background-color:var(--themeColor);
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  color: greenyellow;
+  border: 1rpx solid greenyellow;
+}
+.login-info{
+ position: relative;
+ overflow: hidden;
+ height: 45vh;
+}
+.login-info .back{
+  width: 100%;
+  filter: blur(5px);
+}
+.login-info .touxiang{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30%;
+  text-align: center;
+  color: #fff;
+}
+.login-info .touxiang image{
+  border-radius: 50%;
+  width: 150rpx;
+  margin-bottom: 30rpx;
+}
+
+.my-content{
+  padding: 0rpx 10rpx;
+  height: auto;
+  width: 98vw;
+}
+.shoucang{
+  display: flex;
+  border-color: #fff;
+  background-color: #fff;
+  border: 0rpx solid red;
+}
+.shoucang .item{
+  flex: 1;
+  padding: 10 0rpx;
+  text-align: center;
+}
+.shoucang .item .itme-num{
+  color: var(--themeColor);
+}
+.shoucang{
+  margin-bottom: 20rpx;
+}
+
+.dingdan{
+  margin-bottom:20rpx ;
+  background-color: #fff;
+  border: 0rpx solid red;
+}
+.dingdan .d-title{
+  padding: 10rpx 10rpx;
+  border-bottom: 1rpx solid #ccc;
+  margin-bottom: 10rpx;
+}
+.dingdan .d-content{
+  display: flex;
+}
+.d-content .d-item{
+  flex: 1;
+}
+.d-item .d-item-icon{
+  text-align: center;
+  font-size: 50rpx;
+  color: var(--themeColor);
+}
+.d-item .d-item-title{
+  text-align: center;
+}
+
+.address{
+  background-color: #fff;
+  padding: 10rpx;
+  margin-bottom: 20rpx;
+}
+.share{
+  background-color: #fff;
+  padding: 10rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20px;
+}
+.contact .item{
+  background-color: #fff;
+  padding: 20rpx 10rpx;
+  border-bottom: 3rpx solid #ddd ;
+}
+
+
+

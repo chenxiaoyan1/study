@@ -1,0 +1,12 @@
+@import "../style/common.wxss";
+.v1 {
+  width: calc(750rpx*100/375);
+  height: 200rpx;
+  background-color: green;
+  font-size: 40rpx;
+}
+.v2 {
+  width: 200px;
+  height: 200px;
+  background-color: #444;
+}

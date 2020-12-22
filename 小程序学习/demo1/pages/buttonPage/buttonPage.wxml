@@ -1,0 +1,13 @@
+<button>默认</button>
+<button size="mini">mini</button>
+<button type="primary">primary</button>
+<button type="warn">warn</button>
+<button open-type="contract">contract</button>
+<button open-type="share">share</button>
+<button open-type="getPhoneNumber">getPhoneNumber</button>
+<button open-type="getUserInfo" bindgetuserinfo="getInfo">getUserInfo</button>
+<button open-type="launchApp">launchApp</button>
+<button open-type="openSetting">openSetting</button>
+<button open-type="feedback">feedback</button>
+<icon type="success"></icon>
+<icon type="cancel"></icon>

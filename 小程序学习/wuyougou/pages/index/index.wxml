@@ -1,0 +1,47 @@
+<searchCom></searchCom>
+<swiper autoplay indicator-dots>
+  <swiper-item wx:for="{{swiperData}}" wx:key="goods_id">
+    <navigator url="{{item.navigator_url}}" open-type="navigate"> 
+      <image src="{{item.image_src}}" mode="widthFix"></image>
+    </navigator>
+  </swiper-item>
+</swiper>
+<!-- 导航开始 -->
+<view class="nav">
+  <block wx:for="{{navData}}" wx:key="name"> 
+    <navigator url="{{item.navigator_url}}" open-type="navigate">
+      <image src="{{item.image_src}}" mode="heightFix"></image>
+    </navigator>
+  </block>
+</view>
+<!-- 导航结束 -->
+<!-- 楼层图开始 -->
+<view wx:for="{{floorData}}" sx:for-item="item" wx:key="name" class="floor">
+  <image src="{{item.floor_title.image_src}}" class="floorTitle" mode="widthFix"></image>
+  <view class="productList">
+    <block>
+      <view class="product v1">
+        <navigator src="{{item.product_list[0].navigator_url}}" open-type="navigate">
+          <image src="{{item.product_list[0].image_src}}" mode="widthFix"></image>
+        </navigator>
+      </view>
+      <view class="product v2 ">
+        <navigator src="{{item.product_list[1].navigator_url}}" open-type="navigate">
+          <image src="{{item.product_list[1].image_src}}" mode="scaleToFill"></image>
+        </navigator>
+        <navigator src="{{item.product_list[2].navigator_url}}" open-type="navigate">
+          <image src="{{item.product_list[2].image_src}}" mode="scaleToFill"></image>
+        </navigator>
+      </view>
+      <view class="product v2">
+        <navigator src="{{item.product_list[3].navigator_url}}" open-type="navigate">
+          <image src="{{item.product_list[3].image_src}}" mode="scaleToFill"></image>
+        </navigator>
+        <navigator src="{{item.product_list[4].navigator_url}}" open-type="navigate">
+          <image src="{{item.product_list[4].image_src}}" mode="scaleToFill"></image>
+        </navigator>
+      </view>
+    </block> 
+  </view>
+</view>
+<!-- 楼层图结束 -->

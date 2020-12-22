@@ -1,0 +1,33 @@
+.good-item{
+  display: flex;
+  border:1rpx solid #ccc;
+  padding: 10rpx;
+  /* ？？？？怎么控制不随着图片大而大 */
+}
+.good-item-left{
+  flex: 3;
+}
+.good-item-left image{
+  width: 100%;
+}
+.good-item-right{
+  flex: 7;
+  /* 这里之前不会写  实现价格居下面*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.good-item-right {
+  padding-left: 30rpx;
+}
+.good-item-right .good-title{
+  /* 控制文字显示几行，显示不下就省略号显示 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+  overflow: hidden;
+}
+.good-item-right .good-money{
+  color:var(--themeColor);
+}

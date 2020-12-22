@@ -1,0 +1,84 @@
+<view class="p">
+    <view class="f" style="{{containStyleStr}}">
+    <view class="f-item i1" style="width:{{itemWidth}}vw">1</view>
+    <view class="f-item i2" style="width:{{itemWidth}}vw">2</view>
+    <view class="f-item i3" style="width:{{itemWidth}}vw">3</view>
+    <view class="f-item i4" style="width:{{itemWidth}}vw">4</view>
+    <view class="f-item i5" style="width:{{itemWidth}}vw">5</view>
+    </view>
+    <view class="btnGroup">
+        <view class="btn-content">
+            <view class="btn-title">-------width---------</view>
+            <view class="btn-items">
+               <view bindtap="handleAdd">+</view>
+               <view>{{itemWidth}}</view>
+               <view bindtap="handleSub">-</view>
+            </view>
+        </view>
+        <view class="btn-content">
+            <view class="btn-title">-------display---------</view>
+            <view class="btn-items">
+                <radio-group bindchange="handleDisClick">
+                    <radio value="block">block</radio>
+                    <radio value="flex">flex</radio>
+                </radio-group>
+            </view>
+        </view>
+        <view class="btn-content">
+            <view class="btn-title">-------flex 容器属性---------</view>
+            <view class="btn-items">
+                <!-- <checkbox-group bindchange="handleFlexDirection">
+                    <checkbox value="flex-direction">flex-direction</checkbox> -->
+                   <view>---flex-direction属性---------</view>
+                    <radio-group bindchange="handleFlexDirectionValue">
+                        <radio value="row">row</radio>
+                        <radio value="column">column</radio>
+                        <radio value="row-reverse">row-reverse</radio>
+                        <radio value="column-reverse">column-reverse</radio>
+                    </radio-group>
+                    <view>---flex-wrap---------</view>
+                    <radio-group bindchange="handleFlexWrapValue">
+                        <radio value="nowrap">nowrap</radio>
+                        <radio value="wrap">wrap</radio>
+                        <radio value="wrap-reverse">wrap-reverse</radio>
+                    </radio-group>
+                    <view>----justify-content--------</view>
+                    <radio-group bindchange="handleJustifyContentValue">
+                        <radio value="flex-start">flex-start</radio>
+                        <radio value="flex-end">flex-end</radio>
+                        <radio value="center">center</radio>
+                        <radio value="space-between">space-between</radio>
+                        <radio value="space-around">space-around</radio>
+                    </radio-group>
+                    <view>----align-items--------</view>
+                    <radio-group bindchange="handleAlignItemsValue">
+                        <radio value="stretch">stretch</radio>
+                        <radio value="flex-start">flex-start</radio>
+                        <radio value="flex-end">flex-end</radio>
+                        <radio value="center">center</radio>
+                        <radio value="baseline">baseline</radio>
+                    </radio-group>
+                    <view>----align-content--------</view>
+                    <radio-group bindchange="handleAlignContentValue">
+                        <radio value="stretch">stretch</radio>
+                        <radio value="flex-start">flex-start</radio>
+                        <radio value="flex-end">flex-end</radio>
+                        <radio value="center">center</radio>
+                        <radio value="space-between">space-between</radio>
+                        <radio value="space-around">space-around</radio>
+                    </radio-group>
+                <!-- </checkbox-group> -->
+            </view>
+        </view>
+        <view class="btn-content">
+            <view class="btn-title">-------flex 项目属性---------</view>
+            <view class="btn-items">
+                <radio-group bindchange="">
+                    <radio value="flex">flex</radio>
+                    <radio value="block">block</radio>
+                </radio-group>
+            </view>
+        </view>
+    </view>
+    <!-- <button bindtap="handleClick">click</button> -->
+</view>
