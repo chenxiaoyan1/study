@@ -47,7 +47,8 @@
       "parser": "@typescript-eslint/parser"
     },
     "rules": {
-      "no-debugger": "off"
+      "no-debugger": "off",
+      "no-irregular-whitespace": "off"
     }
   },
   "browserslist": [

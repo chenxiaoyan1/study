@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--如果没有keep-alive    包围，每次点击click count的值都会变为初始的1    -->
+        <keep-alive>
+            <comp v-if="isShow"></comp>
+        </keep-alive>
+        <button type="button" @click="handleClick">click</button>
+    </div>
+    <script>
+        Vue.component("comp",{
+            data:function(){return {count:1}},
+            template:"<div><h1>haha--{{count}}</h1> <button type=\"button\" @click=\"handleClick\">click2</button></div>",
+            methods: {
+                handleClick:function () {
+                    // this.isShow = !this.isShow
+                    this.count++
+                }
+            },
+            beforeCreate(){
+                console.log("beforeCreated")
+            },
+            created(){
+                console.log("created")
+            },
+            beforeMount(){
+                console.log("beforemount")
+            },
+            mounted(){
+                console.log("mounted")
+            },
+            updated(){
+                console.log("updated")
+            },
+            beforeUpdate(){
+                console.log("beforeupdate")
+            },
+            activated(){
+                console.log("activated")
+            },
+            deactivated(){
+                console.log("deactived")
+            }
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                isShow:true,
+                // count:1
+            },
+            methods:{
+                handleClick:function () {
+                    this.isShow = !this.isShow
+                    // this.count++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

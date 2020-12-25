@@ -194,9 +194,33 @@ d.sayHello()
 /**
  * 装饰器根据装饰的目标不同而参数不同
  * 类装饰器，一个参数，参数是类构造函数
- * 方法装饰器：有三个参数 target-实例，name-修饰的方法名，descriptor
+ * 方法装饰器：有三个参数 target-实例，name-修饰的方法名，descriptor-属性描述符
  * 属性装饰器 两个参数 target 实例，name 属性名称，如果包一层，可以传递配置对象进来，更加灵活
  *
-
  * */
+function leiDecorator(c:Function) {
+    console.log(c)
+}
+function methodDecorator(a:any,b:any,c:any) {
+    console.log(a)
+    console.log(b)
+    console.log(c)
+}
+@leiDecorator
+class Lei {
+    name:string
+    constructor(name:string) {
+        this.name = name
+    }
+    @methodDecorator
+    say(){
+        console.log("hello "+this.name)
+    }
+}
+
+let l = new Lei("xiao");
+setTimeout(function(){
+    l.say()
+},5000)
+
 

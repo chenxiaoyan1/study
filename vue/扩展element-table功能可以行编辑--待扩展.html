@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="app">
+    <el-edit-table :data="tableData" id="id">
+        <el-table-column
+                type="selection"
+                width="55">
+        </el-table-column>
+        <el-table-column
+                prop="date"
+                label="日期"
+                width="180"
+                isEdit="true"
+                isRequired="true"
+        >
+        </el-table-column>
+        <el-table-column
+                prop="name"
+                label="姓名"
+                width="180"
+                isEdit="true"
+                isRequired="true"
+        >
+        </el-table-column>
+        <el-table-column
+                prop="address"
+                label="地址"
+                isEdit="false"
+                isRequired="false"
+        >
+        </el-table-column>
+    </el-edit-table>
+
+
+
+</div>
+<script>
+    Vue.component("el-edit-table-column", {
+        props: ["isEdit","isRequired","prop","label"],
+        template:
+            `<el-table-column prop="prop" label="label" width="180" v-bind="$attrs">
+                                 <template slot="header" slot-scope="scope" v-if="isRequired">
+                                  <span class="star">*</span>
+                                  <span class="starName">{{label}}</span>
+                                </template>
+                                <template slot-scope="{row, $index}" v-if="isEdit">
+                                  <el-input  v-model="row[prop]" v-if="editFlag  == row[id]" >
+                                  </el-input>
+                                  <span v-else>{{row[prop]}}</span>
+                                </template>
+                            </el-table-column>`
+    })
+    Vue.component("el-edit-table",{
+        props:["data","id"],
+        data:function(){
+            return {
+                editFlag:'',
+                multipleSelection:[],
+            }
+        },
+        methods:{
+            handleAdd:function () {
+                // const idVal= Date.now().valueOf()
+                // //flag=new表示是新增加的信息项，还没有保存到库表中
+                // this.tableData.push({itemId:idVal,itemName:'',itemType:'',itemLength:1,flag:'new',delFlag:'0'})
+                // this.editFlag = idVal
+            },
+            /** 信息项表格双击行事件*/
+            handleRowDbClick(row, column, event){
+                this.editFlag = row[id]
+            },
+            /**复选框选择事件*/
+            handleCulumnSelectionChange(val){
+                this.multipleSelection = val;
+            },
+            /**目录项行单击事件*/
+            handleRowClick(row, column, event){
+                //当点击其他行的时候，编辑输入域消失
+                if(row[id] !=  this.editFlag){
+                    this.editFlag = ''
+                }
+            },
+        },
+        template:
+                `<div>
+                    <button type="button" @click="handleAdd">add</button>
+                    <template >
+                        <el-table
+                            :data="data"
+                            style="width: 100%"
+                             @row-dblclick="handleRowDbClick"
+                             @selection-change="handleCulumnSelectionChange"
+                             @row-click="handleRowClick"
+                            >
+
+                          <el-edit-table-column ></el-edit-table-column>
+                        </el-table>
+                    </template>
+                </div>`
+    })
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            tableData: [
+                {
+                    id:1,
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+            }, {
+                id:2,
+                date: '2016-05-04',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1517 弄'
+            }, {
+                id:3,
+                date: '2016-05-01',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1519 弄'
+            }, {
+                id:4,
+                date: '2016-05-03',
+                name: '王小虎',
+                address: '上海市普陀区金沙江路 1516 弄'
+            }]
+        },
+        methods:{
+
+        }
+    })
+
+    //https://www.jb51.net/article/193272.htm
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>递归组件</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        ul{
+            list-style: none;
+        }
+
+        .hasChild:before{
+            content: "▷";
+            margin-left: -15px;
+        }
+        .isOpen:before{
+            content: "▽";
+            margin-left: -15px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+<!--    <ul>-->
+<!--        <li v-for="item in list" :key="item.name">-->
+<!--            {{item.name}}-->
+<!--            <ul v-if="item.cList">-->
+<!--                <li v-for="ii in item.cList" :key="ii.name">{{ii.name}}</li>-->
+<!--            </ul>-->
+<!--        </li>-->
+
+<!--    </ul>-->
+    <tree :list="List"></tree>
+
+</div>
+<script>
+    Vue.component("tree",{
+        props:{list:Array},
+        computed:{
+            getArr:function () {
+                function a(arr){
+                   return  arr.map(i=>{
+                        if(i.cList){
+                            // i.ifShow = false
+                            //将ifShow属性设置为响应式的，否则数据改变，页面不改变
+                            Vue.set(i,"ifShow",false)
+                            a(i.cList)
+                        }
+                        return i
+                    })
+                }
+                //递归加上ifShow属性
+                return a(this.list)
+            }
+        },
+
+        data:function(){
+            return {
+                ifShow:false
+            }
+        },
+        methods:{
+            handleClick:function (i) {
+                console.log(i)
+                i.ifShow = !i.ifShow
+            }
+        },
+        template:`<div>
+
+                    <ul v-if="getArr">
+                        <li v-for="ii in getArr"
+                            :key="ii.name"
+                            @click.stop="handleClick(ii)"/>
+                            :class="{hasChild:ii.cList,isOpen:(ii.cList &&ii.ifShow)}"
+                         >
+                            {{ii.name}}
+                        <template v-if="ii.cList" >
+                            <tree :list = "ii.cList" v-show="ii.ifShow"  ></tree>
+                        </template>
+                        </li>
+                    </ul>
+                    </div>
+                  `
+    })
+    new Vue({
+        el:"#app",
+        data:{
+            List:[
+                {
+                    "name": "web全栈工程师",
+                    "cList": [
+                        {
+                            "name": "vue"
+                        },
+                        {
+                            "name": "react",
+                            "cList": [
+                                {
+                                    "name": "javascrict",
+                                    "cList": [
+                                        {
+                                            "name": "css"
+                                        },
+                                        {
+                                            "name": "hook",
+                                            "cList":[
+                                                {
+                                                    "name": "hook-1"
+                                                },
+                                                {
+                                                    "name": "hook2"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                    // ifShow:false
+
+                                }
+                            ]
+                            // ifShow:false
+                        }
+                    ]
+                    // ifShow:false
+                },
+                {
+                    "name": "web高级工程师"
+                },
+                {
+                    "name": "web初级工程师",
+                    "cList": [
+                        {
+                            "name": "javascript"
+                        },
+                        {
+                            "name": "css"
+                        }
+                    ]
+                    // ifShow:false
+                }
+            ]
+        }
+
+    })
+</script>
+</body>
+</html>
