@@ -1,0 +1,39 @@
+
+image {
+  width: 100%;
+}
+.good-swiper swiper{
+  width: 100%;
+  height: calc(100vw*687/687);
+}
+.good-text .good-money{
+  color: var(--themeColor);
+  font-weight: bold;
+  font-size: 50rpx;
+}
+.good-text .good-title{
+  display: flex;
+  padding-bottom: 10rpx;
+}
+.good-title .good-title-left{
+  flex: 5;
+  border-right: 5rpx solid #ccc;
+}
+.good-title .shoucang{
+  flex: 1;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.good-img-det .good-img-det-title{
+  color: var(--themeColor);
+  font-weight: bold;
+  padding: 10rpx;
+  border-bottom: 10rpx solid #ddd;
+  border-top: 10rpx solid #ddd;
+}
+.good-tool{
+  width: 100%;
+  position:fixed;
+  bottom: 0;
+}

@@ -1,0 +1,15 @@
+<navigator url="/pages/goodDetail/index?good_id={{goodItem.goods_id}}" open-type="navigate">
+<view class="good-item">
+  <view class="good-item-left">
+    <image src="{{goodItem.goods_small_logo?goodItem.goods_small_logo:'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" mode="widthFix"></image>
+  </view>
+  <view class="good-item-right">
+    <view class="good-title">
+      {{goodItem.goods_name}}
+    </view>
+    <view class="good-money">
+      ¥ {{goodItem.goods_price}}
+    </view>
+  </view>
+</view>
+</navigator>

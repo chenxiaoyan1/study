@@ -1,0 +1,49 @@
+ {
+  "pages":[
+    "pages/demo3/demo3",
+    "pages/radioPage/radioPage",
+    "pages/buttonPage/buttonPage",
+    "pages/swiperPage/swiperPage",
+    "pages/demo2/demo2",
+    "pages/demo/demo1",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "navigationBarBackgroundColor": "#3CB371",
+    "navigationBarTitleText": "我的小程序",
+    "navigationBarTextStyle":"black",
+    "enablePullDownRefresh":true,
+    "backgroundColor": "#888"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "icon/_flower.png",
+      "selectedIconPath": "icon/flower.png"
+    },
+    {
+      "pagePath": "pages/demo/demo1",
+      "text": "demo1",
+      "iconPath": "icon/_mao.png",
+      "selectedIconPath": "icon/mao.png"
+    },
+    {
+      "pagePath": "pages/demo2/demo2",
+      "text": "demo2",
+      "iconPath": "icon/_snow.png",
+      "selectedIconPath": "icon/snow.png"
+    },
+    {
+      "pagePath": "pages/demo3/demo3",
+      "text": "demo3",
+      "iconPath": "icon/_tree.png",
+      "selectedIconPath": "icon/tree.png"
+    }
+  ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

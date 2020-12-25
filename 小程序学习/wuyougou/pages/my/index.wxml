@@ -1,0 +1,85 @@
+<view class="my-page">
+  <view class="my-info">
+  <view wx:if="{{!userInfo.nickName}}" class="no-login">
+    <button open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">登录</button>
+  </view>
+  <view wx:else class="is-login">
+    <view class="login-info">
+      <image class="back" src="{{userInfo.avatarUrl}}"></image>
+      <view class="touxiang">
+        <image  mode="widthFix" class="" src="{{userInfo.avatarUrl}}"></image>
+        <view class="">{{userInfo.nickName}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="my-content">
+<!-- 收藏栏目 -->
+<view class="shoucang">
+  <view class="item">
+    <view class="itme-num">0</view>
+    <view class="item-title">收藏的店铺</view>
+  </view>
+  <view class="item">
+    <view class="itme-num">0</view>
+    <view class="item-title">收藏的商品</view>
+  </view>
+  <view class="item">
+    <view class="itme-num">0</view>
+    <view class="item-title">关注的商品</view>
+  </view>
+  <view class="item">
+    <view class="itme-num">0</view>
+    <view class="item-title">我的足迹</view>
+  </view>
+</view>
+
+<!-- 订单 -->
+<view class="dingdan">
+  <view class="d-title">我的订单</view>
+  <view class="d-content">
+    <view class="d-item">
+      <view class="d-item-icon iconfont icon-dingdan"></view>
+      <view class="d-item-title">全部订单</view>
+    </view>
+    <view class="d-item">
+      <view class="d-item-icon iconfont icon-daifukuan01"></view>
+      <view class="d-item-title">待付款</view>
+    </view>
+    <view class="d-item">
+      <view class="d-item-icon iconfont icon-daishouhuo"></view>
+      <view class="d-item-title">待发货</view>
+    </view>
+    <view class="d-item">
+      <view class="d-item-icon iconfont icon-tuikuan"></view>
+      <view class="d-item-title">退款/退货</view>
+    </view>
+  </view>
+</view>
+
+<!-- 收货地址管理 -->
+<view class="address">
+  收货地址管理
+</view>
+<!-- 联系客服 -->
+<view class="contact">
+  <view class="item">
+    <view>联系客服</view>
+    <!-- <view>400-3232-3232</view> -->
+  </view>
+  <view class="item">
+    意见反馈
+  </view>
+  <view class="item">
+    关于我们
+  </view>
+</view>
+<!-- 收货地址管理 -->
+<view class="share">
+  将应用分享给他人
+</view>
+</view>
+</view>
+
+
+

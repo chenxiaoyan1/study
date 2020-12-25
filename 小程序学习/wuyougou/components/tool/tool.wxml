@@ -1,0 +1,23 @@
+<view class="tool">
+  <view class="tool-item kefu" >
+    <text class="iconfont icon-lianxi"></text>
+    <text>联系客服</text>
+    <button open-type="contact"></button>
+  </view>
+  <view class="tool-item share" >
+    <text class="iconfont icon-fenxiang"></text>
+    <text> 分享</text>
+    <button open-type="share"></button>
+  </view>
+  <view class="tool-item car" >
+    <text class="iconfont icon-icon-"></text>
+    <text> 购物车</text>
+    <navigator url="/pages/car/index" open-type="switchTab"></navigator>
+  </view>
+  <view class="addCar" bindtap="handleAddCar">
+    加入购物车
+  </view>
+  <view class="buy" bindtap="handleBuy">
+    立即购买
+  </view>
+</view>

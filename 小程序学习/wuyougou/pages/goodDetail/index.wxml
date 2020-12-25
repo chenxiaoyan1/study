@@ -1,0 +1,42 @@
+<view class="good-detail">
+  <view class="good-swiper">
+    <swiper autoplay indicator-dots>
+      <swiper-item 
+      wx:for="{{goodDetailData.pics}}"
+       wx:key="pics_id"
+       bindtap="handleGetBigImg"
+       data-url="{{item.pics_mid_url}}"
+       >
+          <image src="{{item.pics_mid_url}}" mode="widthFix"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="good-text">
+    <view class="good-money">
+      ¥{{goodDetailData.goods_price}}
+    </view>
+    <view class="good-title">
+      <view class="good-title-left">
+        {{goodDetailData.goods_name}}
+      </view>
+      <view class="shoucang">
+        <text class="iconfont icon-shoucang" ></text>
+        <text>收藏</text>
+        
+      </view>
+    </view>
+  </view>
+  <view class="good-img-det">
+    <view class="good-img-det-title">
+      图文详情
+    </view>
+    <view class="goot-img-det-content">
+      <rich-text nodes="{{goodDetailData.goods_introduce}}">
+      </rich-text>
+    </view>
+  </view>
+  <view class="good-tool">
+    <tool goodDetail="{{goodDetailData}}"></tool>
+  </view>
+
+</view>

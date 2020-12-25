@@ -1,0 +1,12 @@
+.active{
+  color: var(--themeColor);
+  padding: 5rpx;
+  border-bottom: 2rpx solid var(--themeColor);
+}
+.tab{
+  display: flex;
+  text-align: center;/*?*/
+}
+.tab .tab-item{
+  flex: 1;
+}

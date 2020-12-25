@@ -1,0 +1,30 @@
+<view class="catalog">
+  <searchCom></searchCom>
+  <view class="catalogContent">
+    <scroll-view  class="left" scroll-y>
+      <view wx:for="{{leftData}}" 
+      wx:key="*this" 
+      class="{{index === currenIndex?'active':''}}"
+      bindtap="handleLeft"
+      data-index="{{index}}"
+      >
+        <view >
+           {{item}}
+        </view>
+      </view>
+    </scroll-view >
+    <scroll-view class="right" scroll-y scroll-top="{{scollTop}}">
+      <view class="right-item" wx:for="{{rightData}}" wx:for-item="item1" wx:key="cat_name">
+        <view class="right-item-title">{{"/"+item1.cat_name+"/"}}</view>
+        <view class="right-item-content">
+            <view class="right-item-item" wx:for="{{item1.children}}" wx:for-item="item2" wx:key="cat_id">
+            <navigator url="/pages/goodList/index?cat_id={{item2.cat_id}}" open-type="navigate">
+              <image mode="widthFix" src="{{item2.cat_icon}}"></image>
+              <text>{{item2.cat_name}}</text>   
+            </navigator>
+            </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

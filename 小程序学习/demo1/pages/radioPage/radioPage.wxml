@@ -1,0 +1,12 @@
+<radio-group bindchange="handleChange">
+  <radio value="1">男</radio>
+  <radio value="2">女</radio>
+</radio-group>
+<checkbox-group bindchange="handleChangeCheck">
+    <checkbox wx:for="{{checkData}}" wx:key="id"  value="{{item.id}}">{{item.name}}</checkbox>
+</checkbox-group>
+<view>
+ 单选项选择的值： {{gental}}
+ <view></view>
+ 复选框选择的值 {{checkedData}}
+</view>

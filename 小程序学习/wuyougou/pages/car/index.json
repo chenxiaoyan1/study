@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "num":"../../components/num/num"
+  },
+  "navigationBarTitleText":"购物车"
+}

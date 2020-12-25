@@ -1,0 +1,8 @@
+<searchCom></searchCom>
+<tab tabs="{{tabs}}" bindtabItemChange="handleTabItemChange">
+  <view wx:if="{{currentTabItemId===1}}">
+    <gooditem wx:for="{{goods}}" goodItem="{{item}}" wx:key="goods_id"></gooditem>
+  </view>
+  <view wx:elif="{{currentTabItemId===2}}">2</view>
+  <view wx:else>3</view>
+</tab>
