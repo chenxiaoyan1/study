@@ -1,0 +1,11 @@
+@import "./import.css";
+.red {
+    color: green;
+}
+.red{
+    color: black;
+}
+.blue{
+    color:lightblue;
+}
+

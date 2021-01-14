@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手写new</title>
+</head>
+<body>
+
+</body>
+<script>
+
+    function _new(fn,...arguments){
+        var obj = {}
+        obj.__proto__=fn.prototype
+        debugger
+        const ret = fn.apply(obj,arguments)
+        return ret instanceof Object?ret:obj
+    }
+    function foo(name,age){
+        this.name=name
+        this.age=age
+        // return null
+    }
+    var ff = _new(foo,"tom",12)
+    console.log(ff)
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <link rel="stylesheet" href="./link.css">
+
+
+<!--    <style type="text/css">-->
+<!--        @import "./import.css";-->
+<!--    </style>-->
+</head>
+<body>
+<h1 class="red" id="app">
+    lala
+</h1>
+<script>
+    setTimeout(function(){
+        var node=document.getElementById("app");
+        // node.className="blue";
+        // node.style
+        console.log( document.styleSheets)
+        document.styleSheets[0].cssRules[0].styleSheet.cssRules[0].style.color = "black"
+        console.log(document.styleSheets[0].cssRules[0].styleSheet.cssRules[0].style.color)
+    },2000)
+
+</script>
+</body>
+</html>

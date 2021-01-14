@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .d1,.d2{
+           margin: 10px;
+            height: 100px;
+            width: 100px;
+        }
+        .d3{
+            overflow: hidden;
+        }
+
+        .d5,.d6{
+            height: 100px;
+            width: 100px;
+            float: left;
+        }
+        .d5{
+            height: 200px;
+        }
+        .green{
+            background-color: lightgreen;
+        }
+        .pink{
+            background-color: lightpink;
+        }
+        .d4{
+            overflow: hidden; /*BFC会计算浮动元素的高度*/
+        }
+
+        .d8{
+            height: 100px;
+            width: 100px;
+            float: left;
+        }
+        .d9{
+            width: 200px;
+            height: 200px;
+            overflow: hidden;
+        }
+.d11{
+    height: 100px;
+    width: 100px;
+
+}
+
+    </style>
+</head>
+<body>
+    <h5>BFC解决上下margin重叠问题:不让他们处于同一个BFC</h5>
+    <div class="d1 green">
+        1
+    </div>
+    <div class="d3 ">
+        <div class="d2 pink">2</div>
+    </div>
+    <h5>BFC解决高度塌陷问题:BFC会计算浮动元素的高度</h5>
+    <div class="d4">
+        <div class="d5 green"></div>
+        <div class="d6 pink"></div>
+    </div>
+    <h5>BFC不会与浮动元素发生重叠</h5>
+    <div class="d7">
+        <div class="d8 green"></div>
+        <div class="d9 pink"></div>
+    </div>
+<div class="d10">
+    <div class="d11 pink"></div>
+
+</div>
+
+</body>
+</html>
