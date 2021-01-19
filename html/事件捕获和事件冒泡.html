@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="d1">
+    <ul id="u1">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+<script>
+    var d1 = document.getElementById("d1")
+    var u1 = document.getElementById("u1")
+    document.body.addEventListener("click",(e)=>{
+
+        console.log("body")
+    },true)
+    d1.addEventListener("click",function(e){
+        console.log("div")
+
+    },true)
+    u1.addEventListener("click",function (e) {
+        console.log("ul")
+        // e.stopPropagation()
+    },true)
+
+    document.body.addEventListener("click",(e)=>{
+        console.log("body")
+
+    },false)
+    d1.addEventListener("click",function(e){
+        console.log("div")
+        return false;
+    },false)
+    u1.addEventListener("click",function (e) {
+
+        console.log("ul")
+
+    },false)
+</script>
+</body>
+</html>

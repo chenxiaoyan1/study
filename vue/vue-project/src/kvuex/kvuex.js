@@ -1,6 +1,7 @@
 var Vue;
 class Store {
     constructor(options) {
+        console.log(options)
         var {state,mutations,actions} = options
         this.state = state
         Vue.util.defineReactive(this,"state",this.state)

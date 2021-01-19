@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function noraml(){
+        console.log(arguments)
+        console.log(this)
+        var fn = (b,...a)=>{
+            console.log(this)
+            console.log(b,a)
+        }
+        fn(1,2,3,2,1)
+    }
+    noraml.apply({"name":"tom"},[5,6,7])
+
+</script>
+</html>

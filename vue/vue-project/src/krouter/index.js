@@ -5,7 +5,8 @@ import KVueRouter from "./KVueRouter";
 Vue.use(KVueRouter)
 const routes = [
     { path: '/page1', component: Index },
-    { path: '/page2', component: HelloWorld }
+    { path: '/page2', component: HelloWorld },
+    { path: '/page3', component: HelloWorld }
 ]
 
 
