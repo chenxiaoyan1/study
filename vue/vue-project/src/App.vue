@@ -1,22 +1,23 @@
 <template>
   <div id="app">
-      <krouter-link to="/page1">Go to Foo</krouter-link>
-      <krouter-link to="/page2">Go to Bar</krouter-link>
-      <krouter-view></krouter-view>
+<!--      <krouter-link to="/page1">Go to Foo</krouter-link>-->
+<!--      <krouter-link to="/page2">Go to Bar</krouter-link>-->
+<!--      <krouter-view></krouter-view>-->
 
 <!--      <router-link to="/page1">Go to Foo1</router-link>-->
 <!--      <router-link to="/page2">Go to Bar1</router-link>-->
 <!--      <router-view></router-view>-->
-
+<tableUi></tableUi>
   </div>
 </template>
 
 <script>
-
+import tableUi from "./pages/table";
 
 export default {
   name: 'App',
   components: {
+      tableUi
   }
 }
 </script>
