@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>requestAnimationFrame</title>
+    <style>
+        div{
+            height: 100px;
+            width: 100px;
+            
+        }
+        #d1{
+            background-color: lightblue;
+            position: relative;
+        }
+        #d2{
+            background-color: lightcoral;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div id="d1"></div>
+<br>
+<div id="d2"></div>
+
+<script>
+    var e1 = document.getElementById("d1");
+    var e2 = document.getElementById("d2");
+    var flag = true;
+    var left = 0;
+    var left2 = 0;
+
+    function render(e) {
+        if(flag == true){
+            if(left>=100){
+                flag = false
+            }
+            e.style.left = ` ${left++}px`
+        }else{
+            if(left<=0){
+                flag = true
+            }
+            e.style.left = ` ${left--}px`
+        }
+    }
+    // setInterval(function(){
+    //     render(e1,left1)
+    // },1000/60)
+
+
+    //requestAnimationFrame效果
+    (function animloop() {
+        render(e2);
+        window.requestAnimationFrame(animloop);
+    })();
+
+
+</script>
+
+</body>
+</html>

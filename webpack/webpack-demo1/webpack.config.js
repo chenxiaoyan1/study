@@ -16,7 +16,11 @@ module.exports = {
         filename:"[name]-[chunkhash:6].js",
         path:path.join(__dirname,"./dist/")
     },
-    devtool:"source-map",
+    //去哪里找第三方模块
+    resolve:{
+        modules:[path.resolve(__dirname,"./node_modules")]
+    },
+    // devtool:"source-map",
     devServer: {
         // contentBase: "./dist",
         open: true,
@@ -26,6 +30,7 @@ module.exports = {
         rules:[
             {
                 test:/\.css$/,
+                include:[path.resolve(__dirname,"./src")],
                 use:[
                     // "style-loader",
                     MiniCssExtractPlugin.loader,
@@ -46,6 +51,7 @@ module.exports = {
             // }
             {
                 test:/\.jpg|png|jpe?g|gif$/,
+                include:[path.resolve(__dirname,"./src")],
                 use:[
                     {
                         loader:"url-loader",

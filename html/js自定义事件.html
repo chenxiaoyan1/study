@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js自定义事件</title>
+</head>
+<body>
+<div id="d1">ll</div>
+<button type="button" onclick="handleClick()">click</button>
+</body>
+<script>
+    var d1 = document.getElementById("d1")
+    var event = new Event("build")
+    d1.addEventListener("build",function(){
+        console.log("build")
+    })
+    function handleClick() {
+        d1.dispatchEvent(event)
+    }
+
+
+</script>
+</html>
