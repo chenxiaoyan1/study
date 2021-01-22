@@ -6,12 +6,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     //用来指定当前构建环境
     mode:"development",
-    // entry:"./src/index.js",
+    entry:"./src/index.js",
     // entry:["./src/index.js","./src/page.js"],
-    entry:{
-        index:"./src/index.js",
-        page:"./src/page.js"
-    },
+    // entry:{
+    //     index:"./src/index.js",
+    //     page:"./src/page.js"
+    // },
     output:{
         filename:"[name]-[chunkhash:6].js",
         path:path.join(__dirname,"./dist/")
@@ -28,6 +28,33 @@ module.exports = {
     },
     module:{
         rules:[
+            {
+                test:/\.js$/,
+                include:[path.resolve(__dirname,"./src")],
+                use:[
+                        {
+                            loader:"babel-loader",
+                            options:{
+                                presets:[
+                                    [
+                                        "@babel/preset-env",
+                                        {
+                                            targets: {
+                                                edge: "17",
+                                                firefox: "60",
+                                                chrome: "67",
+                                                safari: "11.1"
+                                            },
+                                            corejs: 2,//新版本需要指定核⼼心库版本
+                                            useBuiltIns: "usage"//按需注⼊入
+                                        }
+                                    ]
+
+                                ]
+                            }
+                        }
+                ]
+            },
             {
                 test:/\.css$/,
                 include:[path.resolve(__dirname,"./src")],

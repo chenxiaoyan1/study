@@ -8,16 +8,19 @@
 <!--      <router-link to="/page2">Go to Bar1</router-link>-->
 <!--      <router-view></router-view>-->
 <tableUi></tableUi>
+      <table2></table2>
   </div>
 </template>
 
 <script>
 import tableUi from "./pages/table";
+import table2 from "./pages/table3"
 
 export default {
   name: 'App',
   components: {
-      tableUi
+      tableUi,
+      table2
   }
 }
 </script>

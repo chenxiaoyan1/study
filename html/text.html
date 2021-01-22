@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var a = ["(",")"]
+    var b = ["(",")"]
+    var c = ["(",")"]
+    var d = ["(",")"]
+    var e = ["(",")"]
+    var count = 0
+    var str = ""
+
+    var count2 = 0
+    getResult(5)
+    function getResult(num){
+        debugger
+        for(var i=0;i<a.length;i++){
+            str+=a[i]
+            count2++
+            if(count2<num){
+                getResult(num)
+            }
+
+        }
+        if(count2 == num){
+            console.log(str)
+        }
+
+    }
+
+
+    // for(var i=0;i<a.length;i++){
+    //     for(var j=0;j<b.length;j++){
+    //         for(var m=0;m<c.length;m++){
+    //             for(var n=0;n<d.length;n++){
+    //                 for(var o=0;o<e.length;o++){
+    //                     count++
+    //                     console.log(a[i],b[j],c[m],d[n],e[o])
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    // console.log(count)
+</script>
+</html>
