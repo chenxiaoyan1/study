@@ -1,6 +1,6 @@
 # webpack(此文档现有内容基于webpack4)
 webpack is a module bundler(模块打包⼯工具)
-Webpack是⼀一个打包模块化JavaScript的⼯工具，它会从⼊入⼝口模块出发， 识别出源码中的模块化导入语句，递归地找出⼊⼝文件的所有依赖，将⼊ ⼝和其所有的依赖打包到⼀一个单独的⽂件中
+Webpack是⼀一个打包模块化JavaScript的⼯工具，它会从⼊入⼝口模块出发， 识别出源码中的模块化导⼊入语句句，递归地找出⼊入⼝口⽂文件的所有依赖，将⼊入 ⼝口和其所有的依赖打包到⼀一个单独的⽂文件中
 
 ## 基本概念
 - chunk 代码块。一个代码块可以由多个模块组成，一个入口是一个chunk，一个chunk可能有很多依赖
@@ -192,6 +192,7 @@ npm install mini-css-extract-plugin -D
 {
                 test:/\.css$/,
                 use:[
+                  //不用style-loader用MiniCssExtractPlugin
                     // "style-loader",
                     MiniCssExtractPlugin.loader,
                     "css-loader","postcss-loader"
@@ -287,29 +288,134 @@ devServer里面的publicPath表示的是打包生成的静态文件所在的位�
 
 #### 优化resolve.modules配置
 resolve.modules用于配置webpack去哪些目录下寻找第三方模块，默认是['node_modules']
+```js
+ resolve:{
+ //上哪里找第三方模块
+        modules:[path.resolve(__dirname,"./node_modules")],
+   }
+```
 
 #### 优化resolve.alias配置
 > resolve.alias通过配置别名来将原导入路径映射成一个新的导入路径
+> 默认情况下，webpack会从⼊入⼝口⽂文件./node_modules/bin/react/index开始递归解析和处理理依赖 的⽂文件。我们可以直接指定⽂文件，避免这处的耗时。
+cjs
+采⽤用commonJS规范的模块化代码
+umd
+已经打包好的完整代码，没有采⽤用模块化，可以直接执⾏行行
 
-### 优化输出质量
+```js
+ resolve:{
+        alias:{
+            react:path.resolve(__dirname,"./node_modules/react/umd/react.production.min.js"),
+            "react-dom":path.resolve(__dirname,"./node_modules/react-dom/umd/react-dom.production.min.js"),
+        }
+    },
+```
 
+#### resolves.resolve配置
+导⼊入语句句没带⽂文件后缀时，webpack会⾃自动带上后缀后，去尝试查找⽂文件是否存
+在。建议都带上后缀
+```js
+resolve: {
+    extensions: ['.wasm', '.mjs', '.js', '.json'],
+  },
+```
+
+
+#### externals 不打包某文件，使用cdn方式引入
+- 开发的时候正常import即可，配置externals设置不打包某文件，使用c d n方式引入，最后体积会小
+```js
+externals: {
+//jquery通过script引⼊入之后，全局中即有了了 jQuery 变量量 
+'jquery': 'jQuery'
+}
+```
+
+```html
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+```
+
+#### 压缩css
+```shell
+npm install cssnano -D
+npm i optimize-css-assets-webpack-plugin -D
+
+```
+```js
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+new OptimizeCSSAssetsPlugin({
+cssProcessor: require("cssnano"), //引⼊入cssnano配置压缩选项 cssProcessorOptions: {
+    discardComments: { removeAll: true }
+  }
+})
+```
+
+#### 压缩html
+- 借助html-webpack-plugin
+```js
+ 
+new htmlWebpackPlugin({ title: "京东商城",
+	template: "./index.html", filename: "index.html", minify: {
+	// 压缩HTML⽂文件
+	removeComments: true, // 移除HTML中的注释 
+	collapseWhitespace: true, // 删除空⽩白符与换⾏行行符 
+	minifyCSS: true // 压缩内联css
+} }),
+```
+###优化输出质量
 > 优化要输出到线上的代码，减少用户能感知的加载时间
 > 提升代码性能
 
 
+## 代码分割
+> 单页面应用，打包完成后，所有页面只生成一个bundle.js，代码体积大，不利于下载，没有合理利用浏览器资源
+> 如果多个页面都引入了一些公共模块，将公共模块单独抽离出来，单独打包，公共代码只需要下载一次就缓存起来了，避免了重新下载
+```js
+ 
+optimization: {
+   splitChunks: {
+chunks: "all", // 所有的 chunks 代码公共的部分分离出来成为⼀一个单独的⽂文件 },
+},
+```
+
+```js
+ 
+optimization: {
+    splitChunks: {
+			chunks: 'async',//对同步 initial，异步 async，所有的模块有效all 
+			minSize: 30000,//最⼩小尺⼨寸，当模块大于30k才会进行单独打包
+			maxSize: 0,//需要单独打包的模块需要按照这个尺寸再次拆包, 0不拆包 推荐用0
+			minChunks: 1,//单个模块被引用的次数，超过这个值的时候才会单独打包 
+      maxAsyncRequests: 5,//最大异步请求数，默认5 
+			maxInitialRequests: 3,//最大初始化请求书，入口文件同步请求，默认3 
+			automaticNameDelimiter: '-',//打包分割符号
+			name: true,//打包后的名称，除了了布尔值，还可以接收一个函数function 
+			cacheGroups: {//缓存组
+				vendors: {
+					test: /[\\/]node_modules[\\/]/, 
+					name:"vendor", // 要缓存的 分隔出来的 chunk 名称 					
+					priority: -10//缓存组优先级 数字越大，优先级越高；同时满足多个test匹配的时候，priority值越大，越优先
+				},
+        react-dom:{
+					chunks: "initial", // 必须三选⼀一: "initial" | "all" | "async"(默认就是
+					test: /react-dom/, // 正则规则验证，如果符合就提取 chunk,
+          name:"react-dom",
+					minSize: 30000,
+        	minChunks: 1,
+      },
+			default: {
+				minChunks: 2,
+				priority: -20,
+				reuseExistingChunk: true//可设置是否重用该chunk
+			} 
+        }
+		}
+  }
+```
 
 
 
-
-区分环境
-
-- npm方式
-- 外部环境变量方式
-- cross-env方式
-
-cross-env 抹平windows平台和linux平台的路径差异
-
-摇树
+## 摇树--待整理
 css 摇树
 js摇树 不需要依赖其他插件，webpack自带
 
@@ -322,6 +428,15 @@ import(/* webpackPrefetch: true */ './path/to/LoginModal.js');
 预加载：preload  和上面的区别是preload是并行的
 
 happyPack 慎用，项目较少的时候，开启happypack和多线程都是需要时间的，有时候反而构建时间变多了
+
+
+# 区分环境---待整理
+
+- npm方式
+- 外部环境变量方式
+- cross-env方式
+
+cross-env 抹平windows平台和linux平台的路径差异
 
 
 
