@@ -1,6 +1,6 @@
 import {Component} from "react"
 import Layout from "./layout";
-import TitlePane from "../components/titlePane";
+import TitlePane from "../../components/titlePane";
 
 class Main extends Component{
     render(){
@@ -9,9 +9,7 @@ class Main extends Component{
                 {{
                     "content": (<TitlePane></TitlePane>),
                     "txt": "这是一段文字"
-
                 }}
-
             </Layout>
         )
     }

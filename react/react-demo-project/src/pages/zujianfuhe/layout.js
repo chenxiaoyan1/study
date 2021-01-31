@@ -1,5 +1,5 @@
-import Header from "../components/header";
-import Footer from "../components/footer";
+import Header from "../../components/header";
+import Footer from "../../components/footer";
 import  {Component} from "react"
 
 /** 组件复合，类似于vue 的slot*/
