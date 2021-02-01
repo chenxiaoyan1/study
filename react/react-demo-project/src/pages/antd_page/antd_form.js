@@ -4,7 +4,10 @@ import {Component} from "react"
 @Form.create()
 class AntdForm extends Component {
     handleSubmit=()=>{
-        console.log("submit",this)
+        var {getFieldsValue,getFieldValue} = this.props.form
+        console.log(getFieldsValue())
+        console.log(getFieldValue("name"))
+
     }
     render(){
         console.log(this)
@@ -12,18 +15,16 @@ class AntdForm extends Component {
         return (
             <Form>
                 <Form.Item label="name">
-
-
-                    {getFieldDecorator('name', {
-                    })(
+                    {
+                        getFieldDecorator('name', {})(
                         <Input
                            type="text"
                             placeholder="Username"
                         />,
-                    )}
+                    )
+                    }
                 </Form.Item>
                 <Form.Item label="password">
-
                     {getFieldDecorator('password', {
                     })(
                         <Input
@@ -32,7 +33,6 @@ class AntdForm extends Component {
                         />,
                     )}
                 </Form.Item>
-
                 <Form.Item >
                    <button type="submit" onClick={this.handleSubmit}>submit</button>
                 </Form.Item>

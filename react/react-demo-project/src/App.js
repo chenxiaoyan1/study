@@ -4,6 +4,7 @@ import InputCom from "./components/input";
 import Hoc from "./pages/hoc_demo/hoc_demo"
 import InputCom2 from "./components/input2"
 import AntdForm from "./pages/antd_page/antd_form";
+import MyAntdForm from "./pages/my_antd_page/my_antd_form";
 var HocPage = Hoc(InputCom)
 
 function App() {
@@ -17,6 +18,8 @@ function App() {
     <InputCom2 defaultValue="1234567890asdf"></InputCom2>
     {/*  antd form表单实现*/}
     <AntdForm></AntdForm>
+    {/*  自己实现一个antd的form表单*/}
+    <MyAntdForm></MyAntdForm>
     </div>
   );
 }
