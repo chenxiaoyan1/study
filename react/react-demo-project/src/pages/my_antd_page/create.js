@@ -1,31 +1,34 @@
-import {Component} from "react";
+import React, {Component} from "react";
 
 function create(Com){
-
     return (
         class newCom extends Component{
-            constructor() {
-                super();
-                this.state={"name":123456}
+            constructor(props) {
+                super(props);
+                this.state={}
             }
             getFieldValue=(field)=>{
-                console.log(field)
+                return this.state[field]
+
             }
-            //也是一个高阶组件
+            change=(e)=>{
+                let {value,name} = e.target
+                this.setState({[name]:value})
+            }
+            //
             getFieldDecorator=(field,options)=>{
-                debugger
-                return (
-                    // function newFieldDecorator(Com) {
-                    //     return (
-                            function (props) {
-                                return <Com {...props} ></Com>
-                            }
-                        // )
-                    // }
-                )
+                return  (Com)=> {
+                        return (
+                            React.cloneElement(Com,{
+                                value:this.state[field] || "",
+                                onChange:this.change,
+                                name:field
+                            })
+                        )
+                    }
             }
             getFieldsValue=()=>{
-
+                return this.state
             }
             render(){
                 return (
