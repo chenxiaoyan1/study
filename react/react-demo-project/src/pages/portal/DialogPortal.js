@@ -12,7 +12,6 @@ class DialogPortal extends Component{
     componentWillUnmount(): void {
         document.body.removeChild(this.el)
     }
-
     render(){
         let {header,content,footer} = this.props.children
         return createPortal((
@@ -30,5 +29,4 @@ class DialogPortal extends Component{
         ),this.el)
     }
 }
-
 export default DialogPortal
