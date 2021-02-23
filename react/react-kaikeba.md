@@ -197,7 +197,155 @@ import logger from "redux-logger"
 import thunk from "redux-thunk"
 
  const store = createStore(reducer,applyMiddleware(logger,thunk))
+
+//组件中
+ store.dispatch(dispatch=>{
+     setTimeout(function(){dispatch({type:"ADD"})},1000)
+        })
 ```
+## react-redux
+>react-redux 提供两个api
+> - Provider 为后代组件提供store
+> - connect 连接组件和redux store，使组件获得数据以及修改数据的方法 
+
+- 安装
+```shell script
+npm install react-redux --save
+```
+
+- 使用
+```js
+//store.js
+import {createStore} from "redux";
+
+function reducer(state = {count:0},action) {
+    //console.log(state)
+    switch (action.type) {
+        case "ADD":
+            var copyState = JSON.parse(JSON.stringify(state))
+            copyState.count++
+            return copyState;
+        case "MINUS":
+            var copyState = JSON.parse(JSON.stringify(state))
+            copyState.count--
+            return copyState;
+        default:
+            return state
+
+    }
+}
+
+export default createStore(reducer)
+```
+```js
+//父组件，利用provider传递store
+ <Provider store={store}>
+           
+            <ReactReduxPage></ReactReduxPage>
+        </Provider>
+```
+```js
+//要使用store的组件
+import React from "react";
+import {bindActionCreators} from "redux"
+import {connect} from "react-redux"
+
+
+class ReactReduxPage extends React.Component{
+
+    render() {
+        console.log("react-redux-props",this.props)
+        const {state,dispatch,add,minus}  = this.props
+        return (
+            <div className="react-redux">
+                <h4>{state.count}</h4>
+                <button onClick={()=>dispatch({type:"ADD"})}>add use dispatch</button>
+                <button onClick={()=>add()}>add</button>
+                <button onClick={()=>minus()}>minus</button>
+            </div>
+        )
+    }
+}
+
+// ! mapStateToProps 函数
+// ! ownProps 不必填 代表组件本身的props，如果不传，在组件中也会获得，这里传的化假如下面state需要此props ，可以获得
+// ! 当此参数写上的时候，当组件本身props每次变化的时候，mapStateToProps每次都执行,
+// ! 不传此参数的时候，组件本身props每次变化时，mapStateToProps这个函数不会执行
+// ! 因此ownProps谨慎使用，如果mapStateToProps有复杂计算时，会影响性能
+let  mapStateToProps = (state,ownProps)=>{
+   // console.log("state",state,"ownProps",ownProps)
+    return {
+        state:state
+    }
+}
+
+// ! mapDispatchToProps 可以是函数也可以是对象
+// ! 如果不指定mapDispatchToProps，默认props会注入dispatch本身,指定了mapDispatchToProps，就不会注入dispatch 具体注入什么就看怎么写的了
+//! 如果是一个对象
+//!
+//!
+
+// * mapDispatchToProps是对象的形式
+// let mapDispatchToProps = {
+//     add: () => ({type: "ADD"})
+// }
+
+
+//! ownProps 不必填 代表组件本身的props，如果不传，在组件中也会获得，这里传的化假如下面state需要此props ，可以获得
+// ! 当此参数写上的时候，当组件本身props每次变化的时候，mapDispatchToProps每次都执行,
+// ! 不传此参数的时候，组件本身props每次变化时，mapDispatchToProps这个函数不会执行
+// ! 因此ownProps谨慎使用，如果mapDispatchToProps有复杂计算时，会影响性能
+//* mapDispatchToProps是函数的形式
+// let mapDispatchToProps = (dispatch,ownProps)=>{
+let mapDispatchToProps = (dispatch)=>{
+    //console.log("mapDispatchToProps")
+    const res = {
+        minus:()=>({type:"MINUS"})
+    }
+    //bindActionCreators将上面的minus:()=>({type:"MINUS"})变成minus:()=>dispatch({type:"MINUS"})
+    let a = bindActionCreators(res,dispatch)
+    return {
+        dispatch,
+        ...a
+    }
+
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(ReactReduxPage)
+
+```
+
+## react-router
+> react-router包含3个库：react-router,react-router-dom(浏览器中使用),react-router-native(rn中使用)
+>react-router提供最基本的路由功能，不直接安装，安装react-router-dom或react-router-native时会自动安装
+
+- 安装
+```shell script
+npm install --save react-router-dom
+```
+- 使用
+> Route 渲染内容有3种方式，优先级children>component>render 3者只能用一个
+
+
+
+
+
+- 动态路由
+定义路由:
+```js
+<Route path="/search/:id" component={Search} />
+
+<Link to={"/search/" + searchId}>搜索</Link>
+
+
+//获取参数
+this.props.match.params.id
+```
+
+添加导航链接:
+创建Search组件并获取参数:
+ 
+ 
 
 
 
