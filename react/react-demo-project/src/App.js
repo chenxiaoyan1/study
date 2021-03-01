@@ -27,6 +27,7 @@ import {Provider} from "react-redux";
 
 import routerStore from "./pages/react-router/store"
 import SetStateTest from "./pages/test/setState";
+import RefsDemo from "./pages/test/refs-demo";
 
 
 var HocPage = Hoc(InputCom)
@@ -84,8 +85,9 @@ function App() {
         {/*</Provider>*/}
 
     {/*    setState相关测试*/}
-    <SetStateTest></SetStateTest>
-
+    {/*<SetStateTest></SetStateTest>*/}
+    {/*refs 的使用*/}
+    <RefsDemo></RefsDemo>
     </div>
   );
 }

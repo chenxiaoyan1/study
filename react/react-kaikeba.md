@@ -123,7 +123,7 @@ export default DialogPortal
 ## refs
 > refs提供一种方式，允许访问DOM节点或在render中方法中创建的React元素
 - React.createRef()  
-原生的DOM标签或class方式声明的组件
+原生的DOM标签或class方式声明的组件,不适用于function方式定义的组件
 - React.forwardRef 函数式组件
 - hook方式
 - 回调函数方式
