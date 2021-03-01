@@ -120,6 +120,14 @@ class DialogPortal extends Component{
 export default DialogPortal
 ```
 
+## refs
+> refs提供一种方式，允许访问DOM节点或在render中方法中创建的React元素
+- React.createRef()  
+原生的DOM标签或class方式声明的组件
+- React.forwardRef 函数式组件
+- hook方式
+- 回调函数方式
+
 ## context
 > context提供了一个无需为每层组件手动添加props， 就能在组件树间进行数据传递的方法
 >实现祖代向后代组件跨层级传值，vue中provide/inject来源于context
@@ -346,6 +354,8 @@ this.props.match.params.id
 创建Search组件并获取参数:
  
  
+
+
 
 
 

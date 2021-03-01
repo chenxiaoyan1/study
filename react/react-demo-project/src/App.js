@@ -26,6 +26,7 @@ import ReactRputerPage from "./pages/react-router/router";
 import {Provider} from "react-redux";
 
 import routerStore from "./pages/react-router/store"
+import SetStateTest from "./pages/test/setState";
 
 
 var HocPage = Hoc(InputCom)
@@ -78,9 +79,12 @@ function App() {
         {/*</KProvider>*/}
         {/*<hr/>*/}
         {/* react-router使用*/}
-        <Provider store={routerStore}>
-            <ReactRputerPage></ReactRputerPage>
-        </Provider>
+        {/*<Provider store={routerStore}>*/}
+        {/*    <ReactRputerPage></ReactRputerPage>*/}
+        {/*</Provider>*/}
+
+    {/*    setState相关测试*/}
+    <SetStateTest></SetStateTest>
 
     </div>
   );
