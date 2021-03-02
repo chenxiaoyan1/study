@@ -2,7 +2,7 @@ import {Component} from "react";
 import store from "./store";
 
 class MyReduxPage extends Component{
-    componentDidMount(): void {
+    componentDidMount() {
         store.subscribe(()=>{
             var a = store.getState()
             this.forceUpdate()
