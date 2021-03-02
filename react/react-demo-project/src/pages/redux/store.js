@@ -13,7 +13,7 @@ import thunk from "redux-thunk"
     }
  }
 // ! 红色的注释
-// ? 蓝色的zhushi
+// ? 蓝色的注释
 // * 绿色的注释
 // todo 橙色的注释
 

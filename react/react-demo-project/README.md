@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+react中用jsx语法描述视图，通过babel-loader转译后他们变成React-createElement()形式，该函数将
+生成vdom来描述真实dom,将来如果状态变化，vdom将做出相应变化，再通过diff算法对比新老vdom区别，
+从而做出最终dom操作
