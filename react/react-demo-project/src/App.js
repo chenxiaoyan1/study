@@ -28,6 +28,8 @@ import {Provider} from "react-redux";
 import routerStore from "./pages/react-router/store"
 import SetStateTest from "./pages/test/setState";
 import RefsDemo from "./pages/test/refs-demo";
+import Lifecycle from "./pages/test/lifecycle";
+import EventCom from "./pages/test/event";
 
 
 var HocPage = Hoc(InputCom)
@@ -86,8 +88,12 @@ function App() {
 
     {/*    setState相关测试*/}
     {/*<SetStateTest></SetStateTest>*/}
-    {/*refs 的使用*/}
-    <RefsDemo></RefsDemo>
+    {/*  refs  的使用*/}
+    {/*<RefsDemo></RefsDemo>*/}
+    {/*生命周期的使用*/}
+    {/*<Lifecycle></Lifecycle>*/}
+    {/*合成事件*/}
+      <EventCom/>
     </div>
   );
 }

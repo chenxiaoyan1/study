@@ -46,6 +46,76 @@ var hocPage = hoc(InputCom)
 
 ```
 
+## 生命周期函数
+[react生命周期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+- 生命周期函数解释
+更新阶段：当组件的props改变了，或组件内部调用了setState或者forceUpdate发生，会发生多次
+### getDerivedStateFromProps
+```js
+static getDerivedStateFromProps(props,state){}
+```
+> 是一个静态函数，不能使用this;这里props和state都是最新的
+>该函数会在挂载时，在更新时接收到新的 props，调用了 setState 和 forceUpdate 时被调用
+>函数会返回一个对象用来更新当前的 state，如果不需要更新可以返回 null,如果不返回null,则会将
+        返回的对象和现有的state合并
+
+### render
+>    //! render函数应该是一个纯函数，就是返回需要渲染的东西，不应该包含其他业务逻辑，如数据
+          // ! 请求，对于这些业务逻辑，移到componentDidMount和componentDidUpdate中
+
+### componentDidMount
+>  //! componentDidMount 会在组件挂载后调用，此时可以获得DOM节点并操作,在此生命周期中可以请求数据，添加订阅
+         // ! 在componentDidMount 中调用setState会触发更新操作，多调用一次render，但是用户不会看到
+         // ! 中间状态，因为此次渲染发生在屏幕刷新前，但避免此操作，有性能问题
+### shouldComponentUpdate
+>  // !shouldComponentUpdate(nextProps, nextState) 有两个参数nextProps和nextState，表示新的属性和变化之后的state，返回一个布尔值，true表示会触发重新渲染，false表示不会触发重新渲染，默认返回true
+         // ! 默认返回true,有时候会有性能问题，要将this.props与nextProps以及this.state与nextState进行比较来决定是否返回false，来减少重新渲染
+
+### getSnapshotBeforeUpdate
+>    /**
+           * ! getSnapshotBeforeUpdate(prevProps, prevState)
+           * ! 有两个参数prevProps和prevState，表示之前的属性和之前的state，这个函数有一个返回值，会作为第三个参数传给componentDidUpdate，
+           * ! 如果你不想要返回值，请返回null，不写的话控制台会有警告
+           */
+### componentDidUpdate
+>  ! componentDidUpdate(prevProps, prevState, snapshot) 有三个参数prevProps，prevState，snapshot，
+          * ! 表示之前的props，之前的state，和snapshot。第三个参数是getSnapshotBeforeUpdate返回的
+          * ! 在这个函数里我们可以操作DOM，和发起服务器请求，还可以setState，但是注意一定要用if语句控制，否则会导致无限循环
+
+### componentWillUnMount
+>  ! 当我们的组件被卸载或者销毁了就会调用，我们可以在这个函数里去清除一些定时器，取消网络请求，清理无效的DOM元素等垃圾清理工作
+>   ! 注意不要在这个函数里去调用setState，因为组件不会重新渲染了
+
+
+## 合成事件
+- 什么是合成事件
+React基于虚拟DOM实现了一个合成事件层，使用事件委托方式将所有事件都自动绑定在最外层上
+- 合成事件的好处
+1.进行浏览器兼容，实现更好的跨平台
+React 采用的是顶层事件代理机制，能够保证冒泡一致性，可以跨浏览器执行。React 提供的合成事件用来抹平不同浏览器事件对象之间的差异，将不同平台事件模拟合成事件。
+
+2.避免垃圾回收
+事件对象可能会被频繁创建和回收，因此 React 引入事件池，在事件池中获取或释放事件对象。即 React 事件对象不会被释放掉，而是存放进一个数组中，当事件触发，就从这个数组中弹出，避免频繁地去创建和销毁(垃圾回收)。
+
+3.方便事件统一管理和事务机制
+
+
+- 合成事件和原生事件的区别
+1.事件名称命名方式不同
+合成事件是采用小驼峰式 onClick
+原生事件是全部小写 onclick
+2.事件处理函数写法不同
+  原生事件中事件处理函数为字符串，在 React JSX 语法中，传入一个函数作为事件处理函数。
+3.原生事件一定要在componentWillUnmount中手动移除，否则可能出现内存泄露问题
+
+- 合成事件和原生时间的执行顺序
+先执行原生事件，再执行react事件
+
+
+## setState
+- setState是同步还是异步
+在setTimeout，原生事件中是同步的，在合成事件，生命周期中是异步的
+
 ## 装饰器
 上面的高阶组件可以用装饰器
 装饰器只能用在clss定义的组件上
@@ -127,6 +197,13 @@ export default DialogPortal
 - React.forwardRef 函数式组件
 - hook方式
 - 回调函数方式
+具体使用方法见src/pages/test/refs-demo.js
+
+## 有用的react链接
+https://processon.com/view/link/5dd68342e4b001fa2e0c4697#map
+
+https://react.jokcy.me/book/api/react-children.html#--源码解析
+
 
 ## context
 > context提供了一个无需为每层组件手动添加props， 就能在组件树间进行数据传递的方法
@@ -151,6 +228,8 @@ const MyContext = React.createContext(defaultValue);
 ```
 >当 Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染
 > parent及其子组件可以获得context（前提是接收了）
+> 当value的值是一个对象的时候，不要这样写value={{name:"tom"}}因为每次都是新对象，即使数据没有变化也会渲染，
+>造成性能问题，将对象放在state中，value={this.state.nameObj}
 #### Class.contextType
 > class方式组件接收context的方式
 ```js
