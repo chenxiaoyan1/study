@@ -30,6 +30,8 @@ import SetStateTest from "./pages/test/setState";
 import RefsDemo from "./pages/test/refs-demo";
 import Lifecycle from "./pages/test/lifecycle";
 import EventCom from "./pages/test/event";
+import ReactLazy from "./pages/other/react-lazy";
+import PureComponentTest from "./pages/other/pure-component/pure-component";
 
 
 var HocPage = Hoc(InputCom)
@@ -93,7 +95,11 @@ function App() {
     {/*生命周期的使用*/}
     {/*<Lifecycle></Lifecycle>*/}
     {/*合成事件*/}
-      <EventCom/>
+    {/*  <EventCom/>*/}
+    {/*react组件按需加载*/}
+    {/*<ReactLazy></ReactLazy>*/}
+    {/*pureComponent的使用*/}
+    <PureComponentTest/>
     </div>
   );
 }

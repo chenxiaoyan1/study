@@ -204,6 +204,7 @@ https://processon.com/view/link/5dd68342e4b001fa2e0c4697#map
 
 https://react.jokcy.me/book/api/react-children.html#--源码解析
 
+https://www.cnblogs.com/dhui/p/12982452.html --原型，原型链，以及看看他的其他文章
 
 ## context
 > context提供了一个无需为每层组件手动添加props， 就能在组件树间进行数据传递的方法
@@ -435,10 +436,29 @@ this.props.match.params.id
  
 
 
+//! React.Lazy帮助我们按需加载组件，从而减少我们应用程序的加载时间，因为只加载我们所需的组件。
+//! React.lazy接受一个函数，这个函数内部调用 import() 动态导入。它必须返回一个 Promise，该 Promise 需要 resolve 一个 defalut export 的 React 组件。
+//! React.Suspense 用于包装延迟组件以在加载组件时显示后备内容。
 
 
+// !错误边界
+// 两种方式处理错误生命周期 componentDidCatch 来处理错误，
+// 还有一种 是 静态方法 static getDerivedStateFromError 来处理错误
+//定义一个错误标识，在render时如果错误标识为真则渲染备用组件，为假则渲染真实组件
 
 
+PureComponent
+当一个组件的props或state变更，React 会将最新返回的元素与之前渲染的元素进行对比，以此决定是否有必要更新真实的 DOM，当它们不相同时 React 会更新该 DOM。
+如果渲染的组件非常多时可以通过覆盖生命周期方法 shouldComponentUpdate 来进行优化
+shouldComponentUpdate 方法会在重新渲染前被触发。其默认实现是返回 true,如果组件不需要更新，可以在shouldComponentUpdate中返回 false 来跳过整个渲染过程。其包括该组件的 render 调用以及之后的操作
+PureComponent通过prop和state的浅比较来实现shouldComponentUpdate
+
+class组件可以通过继承PureComponent来优化
+function组件可以通过React.memo来优化
+// const Title2 = React.memo(props=>{
+//     console.log('Title2 render');
+//     return  <p>{props.title}</p>;
+// });
 
 # react 和 vue的异同
 ## 插槽写法
