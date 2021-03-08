@@ -72,7 +72,7 @@ function Title2(props){
 //     }
 // }
 
-// ! memo的实现，实质就是高阶组件，里面继承PureComponent
+// ! memo的实现，实质就是高阶组件，里面返回的组件继承PureComponent
 function memo(Com){
     return class extends PureComponent{
         render(){

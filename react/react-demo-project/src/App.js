@@ -32,6 +32,7 @@ import Lifecycle from "./pages/test/lifecycle";
 import EventCom from "./pages/test/event";
 import ReactLazy from "./pages/other/react-lazy";
 import PureComponentTest from "./pages/other/pure-component/pure-component";
+import ParentCom from "./pages/other/组件通信/ParentChild";
 
 
 var HocPage = Hoc(InputCom)
@@ -100,6 +101,8 @@ function App() {
     {/*<ReactLazy></ReactLazy>*/}
     {/*pureComponent的使用*/}
     <PureComponentTest/>
+    {/*父子组件通信*/}
+    <ParentCom></ParentCom>
     </div>
   );
 }
