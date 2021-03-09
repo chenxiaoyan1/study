@@ -89,7 +89,7 @@ function App() {
         {/*</Provider>*/}
 
     {/*    setState相关测试*/}
-    {/*<SetStateTest></SetStateTest>*/}
+    <SetStateTest></SetStateTest>
     {/*  refs  的使用*/}
     {/*<RefsDemo></RefsDemo>*/}
     {/*生命周期的使用*/}
@@ -99,7 +99,7 @@ function App() {
     {/*react组件按需加载*/}
     {/*<ReactLazy></ReactLazy>*/}
     {/*pureComponent的使用*/}
-    <PureComponentTest/>
+    {/*<PureComponentTest/>*/}
     </div>
   );
 }

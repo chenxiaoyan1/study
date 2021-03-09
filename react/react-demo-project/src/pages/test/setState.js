@@ -16,6 +16,13 @@ class SetStateTest extends Component{
         this.setState({count:this.state.count+1})
         console.log("setState之后2",this.state.count)
 
+        setTimeout( ()=> {
+            console.log("setTimeout",this.state.count)//1
+            // console.log(this)
+            this.setState({count:this.state.count+1})//2
+            console.log(this.state.count)
+        },0)
+
     }
 
     handleClick2 = ()=>{
