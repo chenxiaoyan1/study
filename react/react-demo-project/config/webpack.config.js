@@ -164,7 +164,8 @@ module.exports = function (webpackEnv) {
     //     ? 'source-map'
     //     : false
     //   : isEnvDevelopment && 'cheap-module-source-map',
-    devtool:"cheap-module-source-map",
+    // devtool:"cheap-module-source-map",
+    devtool:"source-map",
     // These are the "entry points" to our application.
     // This means they will be the "root" imports that are included in JS bundle.
     entry:
@@ -330,6 +331,8 @@ module.exports = function (webpackEnv) {
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
+          // 'react': path.resolve(__dirname, '../src/react/packages/react'),
+          // 'react-dom': path.resolve(__dirname, '../src/react/packages/react-dom')
         }),
         ...(modules.webpackAliases || {}),
       },
