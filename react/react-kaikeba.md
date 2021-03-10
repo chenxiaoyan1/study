@@ -493,6 +493,145 @@ function memo(Com){
 > }
 > })
 
+
+## HOOK
+### useState
+useState 是允许 你在 React 函数组件中添加 state 的 Hook。
+
+```js
+import {useState} from "react";
+
+function UseStateTest(props) {
+    //* 声明⼀一个叫 “count” 的 state 变量量，初始化为0
+    const [count,setCount] = useState(0)
+
+    return (
+        <div>
+            <p>count:{count}</p>
+            {/*
+               ! 用户点击后我们传递一个新的值给 setCount，React会重新渲染该组件,并把最新的count传给他
+            */}
+            <button onClick={()=>{setCount(count+1)}}>add</button>
+        </div>
+    )
+}
+```
+### useEffect
+Eﬀect Hook 可以让你在函数组件中执⾏副作用操作。 数据获取，设置订阅以及手动更改 React 组件中的 DOM 都属于副作⽤。
+- useEffect 做了什么？
+ 通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作
+- useEffect 会在每次渲染后都执行吗？ 
+是的，默认情况下，所有useEffect在第一次渲染之后和每次更新之后都会执行,这样有时会浪费性能，这时用到useEffect的
+第二个参数进行控制useEffect什么时候执行
+```js
+  //! useEffect 第一个参数必须，第二个参数非必须，
+//! 第一个参数相当于class组件的componentDidMount 和 componentDidUpdate生命周期函数
+    //! 第二个参数表示:当第二个参数变化时才会执行第一个参数,当第二个参数是空数组时，表示只执行一次，不再重复执行
+    //! 当第一个参数返回一个函数时，表示清除函数，不是必须的，当需要清除副作用时return一个函数，不需要清除时不用写return
+    useEffect(()=>{
+        console.log("useEffect")
+        document.title = `you clicked ${count} times`
+        return ()=>{
+            //!React 会在执行当前 effect 之前对上一个 effect 进行清除,每次更新渲染时都会先执行clean再执行effect
+            console.log("clean")
+        }
+    },[count])
+```
+### useMemo
+把“创建”函数和依赖项数组作为参数传入 useMemo ，
+它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进⾼开销的计算
+
+
+把内联回调函数及依赖项数组作为参数传入 useCallback ，它将返回该回调函数的 memoized 版本，
+ 该回调函数仅在某个依赖项改变时才会更更新。当你把回调函数传递给经过优化的并使用引用相等性去
+ 避 免非必要渲染（例例如 shouldComponentUpdate ）的子组件时，它将⾮常有用。
+ 
+```js
+const expensive = useMemo(() => {
+        console.log("compute");
+        let sum = 0;
+        for (let i = 0; i <= count; i++) {
+            sum += i;
+        }
+        return sum;    //! 只有count变化，这⾥才重新执行
+         }, [count]);
+```
+
+### useCallback
+把内联回调函数及依赖项数组作为参数传⼊useCallback ，它将返回该回调函数的 memoized 版本， 
+该回调函数仅在某个依赖项改变时才会更更新。当你把回调函数传递给经过优化的并使⽤用引⽤用相等性去避 免
+⾮必要渲染（例例如 shouldComponentUpdate ）的⼦组件时，它将⾮常有用。
+```js
+import React, { useState, useCallback, PureComponent,Component } from "react";
+
+function UseCallbackTest(props) {
+    const [count, setCount] = useState(0);
+    const addClick = useCallback(() => {
+        console.log("calback")
+        let sum = 0;
+        for (let i = 0; i <= count; i++) {
+            sum += i;
+        }
+        return sum;
+        }, [count]);//! addClick这个函数以来count的变化，当count变化时，表示addClick变化，若count没有变化，表示addClick没有变化
+    const [value, setValue] = useState("");
+    return (
+        <div>
+            {console.log("UseCallbackTest")}
+            <h3>UseCallbackPage</h3>
+            <p>{count}</p>
+            <button onClick={() => setCount(count + 1)}>add</button>
+            {/*
+            ! 当在input框输入值时，传递一个新的值给setValue，React重新渲染该组件，也就是会重新渲染chid组件
+            ! child组件继承PureComponent,若useCallback没有第二个参数，他每次渲染认为这个函数不一样，child就会每次
+            !都渲染，若useCallback有第二个参数，表示他依赖count的变化，每次输入input的值，count没有变化
+            !则认为这个函数没有变化，不会每次渲染child组件，性能得到优化
+            */}
+            <input value={value} onChange={event => setValue(event.target.value)} />
+            <Child addClick={addClick} />
+        </div>
+    );
+}
+class Child extends PureComponent{
+    render() {
+        console.log("child render");
+        const {addClick} = this.props;
+        return (
+            <div>
+                <h3>Child</h3>
+                <button onClick={() => console.log(addClick())}>add</button>
+            </div>
+        );
+    }
+}
+
+export default UseCallbackTest
+
+```
+**useMemo 和 useCallback**
+
+我认为是：
+
+useMemo对于一个值来说，他依赖哪个state变化
+
+useCallback对于一个函数来说，他依赖哪个state变化
+ 
+### useContext
+useContext(MyContext) 相当于 class 组件中的 static contextType = MyContext 
+或者 <MyContext.Consumer>。
+
+### HOOK的使用规则
+HOOK就是javascript函数，使用它有 规则：
+- 只能在函数最外层调用HOOK，不要在循环，条件判断或子函数中调用
+- 只能在React的函数组件中调用HOOK，不要在其他javascript函数中调用（还有一个地方可调用HOOK，就是在自定义的HOOK中）
+
+### 自定义HOOK
+有时候，我们想要在组件之间重用一些状态逻辑，目前为止有两种主流方案解决这个问题：高阶组件和render props。
+自定义HOOK可以在不增加组件的情况下达到同样的目的
+自定义HOOK是一个函数，其名称以“use”开头，函数内部可以调用其他 的HOOK
+
+
+
 # react 和 vue的异同
 ## 插槽写法
 - react写法 组件复合 layout.js main.js

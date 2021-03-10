@@ -33,6 +33,10 @@ import EventCom from "./pages/test/event";
 import ReactLazy from "./pages/other/react-lazy";
 import PureComponentTest from "./pages/other/pure-component/pure-component";
 import ParentCom from "./pages/other/组件通信/ParentChild";
+import UseStateTest from "./pages/hook/useState";
+import UseEffectTest from "./pages/hook/useEffect";
+import UseMemoTest from "./pages/hook/useMemo";
+import UseCallbackTest from "./pages/hook/useCallback";
 
 
 var HocPage = Hoc(InputCom)
@@ -90,7 +94,7 @@ function App() {
         {/*</Provider>*/}
 
     {/*    setState相关测试*/}
-    <SetStateTest></SetStateTest>
+    {/*<SetStateTest></SetStateTest>*/}
     {/*  refs  的使用*/}
     {/*<RefsDemo></RefsDemo>*/}
     {/*生命周期的使用*/}
@@ -100,13 +104,17 @@ function App() {
     {/*react组件按需加载*/}
     {/*<ReactLazy></ReactLazy>*/}
     {/*pureComponent的使用*/}
-<<<<<<< HEAD
     {/*<PureComponentTest/>*/}
-=======
-    <PureComponentTest/>
     {/*父子组件通信*/}
-    <ParentCom></ParentCom>
->>>>>>> f6285455b1153cc719fa365aec0a830db013cc16
+    {/*<ParentCom></ParentCom>*/}
+    {/*useState使用*/}
+    {/*<UseStateTest/>*/}
+    {/*useEffect使用*/}
+    {/*<UseEffectTest/>*/}
+    {/*useMemo使用*/}
+    {/*<UseMemoTest/>*/}
+    {/*useCallback使用*/}
+    <UseCallbackTest/>
     </div>
   );
 }
