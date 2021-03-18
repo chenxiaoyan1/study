@@ -45,9 +45,47 @@ var hoc = Com=> props=>{
 var hocPage = hoc(InputCom)
 
 ```
+## 装饰器
+上面的高阶组件可以用装饰器
+**装饰器只能用在class定义的组件上**
 
+```js
+
+import {Component} from "react"
+import hoc from "../pages/hoc_demo/hoc_demo"
+
+@hoc
+class InputCom extends Component{
+    render() {
+        console.log(this)
+        return (
+            <input type="text" placeholder="请输入文字" {...this.props}/>
+        )
+    }
+}
+export default InputCom
+```
+- 装饰器配置
+```shell script
+
+npm install -D @babel/plugin-proposal-decorators
+```
+```json
+//pacgage.json
+  "babel": {
+    "presets": [
+      "react-app"
+    ],
+    "plugins": [
+      ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ]
+  },
+```
 ## 生命周期函数
 [react生命周期](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+![avatar](/Users/chenxiaoyan/学习/study/react/react生命周期.png)
+
 - 生命周期函数解释
 更新阶段：当组件的props改变了，或组件内部调用了setState或者forceUpdate发生，会发生多次
 ### getDerivedStateFromProps
@@ -91,13 +129,14 @@ static getDerivedStateFromProps(props,state){}
 - 什么是合成事件
 React基于虚拟DOM实现了一个合成事件层，使用事件委托方式将所有事件都自动绑定在最外层上
 - 合成事件的好处
-1.进行浏览器兼容，实现更好的跨平台
+
+	1.进行浏览器兼容，实现更好的跨平台
 React 采用的是顶层事件代理机制，能够保证冒泡一致性，可以跨浏览器执行。React 提供的合成事件用来抹平不同浏览器事件对象之间的差异，将不同平台事件模拟合成事件。
 
-2.避免垃圾回收
+	2.避免垃圾回收
 事件对象可能会被频繁创建和回收，因此 React 引入事件池，在事件池中获取或释放事件对象。即 React 事件对象不会被释放掉，而是存放进一个数组中，当事件触发，就从这个数组中弹出，避免频繁地去创建和销毁(垃圾回收)。
 
-3.方便事件统一管理和事务机制
+	3.方便事件统一管理和事务机制
 
 
 - 合成事件和原生事件的区别
@@ -116,41 +155,7 @@ React 采用的是顶层事件代理机制，能够保证冒泡一致性，可�
 - setState是同步还是异步
 在setTimeout，原生事件中是同步的，在合成事件，生命周期中是异步的
 
-## 装饰器
-上面的高阶组件可以用装饰器
-装饰器只能用在clss定义的组件上
-```js
 
-import {Component} from "react"
-import hoc from "../pages/hoc_demo/hoc_demo"
-
-@hoc
-class InputCom extends Component{
-    render() {
-        console.log(this)
-        return (
-            <input type="text" placeholder="请输入文字" {...this.props}/>
-        )
-    }
-}
-export default InputCom
-```
-- 装饰器配置
-```shell script
-
-npm install -D @babel/plugin-proposal-decorators
-```
-```json
-//pacgage.json
-  "babel": {
-    "presets": [
-      "react-app"
-    ],
-    "plugins": [
-      ["@babel/plugin-proposal-decorators", { "legacy": true }]
-    ]
-  },
-```
 
 ## portal 传送门
 > 作用：当想把父组件的某个子组件渲染到页面中其他盒子（非父组件子树）里的时候，就用poral,参考DialogPortal.js
@@ -198,6 +203,120 @@ export default DialogPortal
 - hook方式
 - 回调函数方式
 具体使用方法见src/pages/test/refs-demo.js
+```js
+import React,{Component,useRef} from "react";
+
+
+class RefsDemo extends Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            count:1
+        }
+        this.nameRef = React.createRef()
+        this.ageRef = React.createRef()
+        this.hobbyRef = React.createRef()
+
+        this.nameRef2 = null
+
+    }
+    handleSave = ()=>{
+        // ! 在普通标签上用React.createRef()方式获得
+        console.log("name值：",this.nameRef.current.value)
+        // ! class组件上使用ref
+        console.log("age值：",this.ageRef.current.getInputRef().current.value)
+        // ! function定义的组件上使用ref
+        console.log("hobby值：",this.hobbyRef.current.value)
+        // ! 回调函数的方式使用ref
+        console.log("study值：",this.nameRef2.value)
+    }
+    handleNameRef = (ele)=>{
+        console.log("handleNameRef",ele)
+        this.nameRef2 = ele
+    }
+    add = ()=>{
+        this.setState({count:this.state.count+1})
+    }
+    render() {
+        const FunComRef= React.forwardRef(FunCom)
+        return (
+            <div>
+                <div>
+                    <p>{this.state.count}</p>
+                </div>
+                <div>
+                    姓名：<input ref={this.nameRef}/>
+                </div>
+                <div>
+                    年龄：<ClassCom ref={this.ageRef}></ClassCom>
+                </div>
+                <div>
+                    爱好：<FunComRef ref={this.hobbyRef}></FunComRef>
+                </div>
+                <div>
+                    学历：<input ref={this.handleNameRef} type="text"/>
+                    {/* 内联方式使用ref，不建议使用，每次都重新执行*/}
+                    {/*学历：<input ref={*/}
+                    {/*    (ele)=>{*/}
+                    {/*        console.log("handleNameRef",ele)*/}
+                    {/*        this.nameRef2 = ele*/}
+                    {/* }*/}
+                    {/*}*/}
+                    {/*          type="text"/>*/}
+                </div>
+                <div>
+                    其他：<FunCom2></FunCom2>
+                </div>
+                <div>
+                    <button onClick={this.handleSave}>保存</button>
+                    <button onClick={this.add}>add</button>
+                </div>
+            </div>
+        )
+    }
+}
+
+class ClassCom extends Component{
+    constructor(props) {
+        super(props);
+        this.inputRef = React.createRef()
+    }
+    getInputRef = ()=>{
+        return this.inputRef
+    }
+    render() {
+        console.log("render")
+        return (
+            <input type="text" ref={this.inputRef}/>
+        )
+    }
+}
+
+function FunCom(props,ref) {
+    return(
+        <input type="text" ref={ref}/>
+    )
+}
+function FunCom2(){
+    const r = useRef(null)
+
+    return (
+        <div>
+            <input ref={r} type="text"/>
+            {/*
+            ! hook方式使用ref
+            */}
+            <button onClick={()=>{
+                console.log("其他",r.current.value)
+            }}>getValue</button>
+        </div>
+
+    )
+}
+
+export default RefsDemo
+
+```
 
 ## 有用的react链接
 https://processon.com/view/link/5dd68342e4b001fa2e0c4697#map--react源码文件指引
@@ -252,7 +371,7 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 ## Redux
-> Redux 是JavaScript应用的状态容器，他保证程序行为一致性且易于测试
+> Redux 是JavaScript应用的状态容器（注意是j avascript的，不但react可以用，其他也可以用），他保证程序行为一致性且易于测试
 > 1. 需要⼀一个store来存储数据
 > 2. store里的reducer初始化state并定义state修改规则 
 > 3. 通过dispatch一个action来提交对数据的修改
@@ -545,7 +664,7 @@ Eﬀect Hook 可以让你在函数组件中执⾏副作用操作。 数据获取
 把内联回调函数及依赖项数组作为参数传入 useCallback ，它将返回该回调函数的 memoized 版本，
  该回调函数仅在某个依赖项改变时才会更更新。当你把回调函数传递给经过优化的并使用引用相等性去
  避 免非必要渲染（例例如 shouldComponentUpdate ）的子组件时，它将⾮常有用。
- 
+
 ```js
 const expensive = useMemo(() => {
         console.log("compute");
@@ -615,7 +734,7 @@ export default UseCallbackTest
 useMemo对于一个值来说，他依赖哪个state变化
 
 useCallback对于一个函数来说，他依赖哪个state变化
- 
+
 ### useContext
 useContext(MyContext) 相当于 class 组件中的 static contextType = MyContext 
 或者 <MyContext.Consumer>。
