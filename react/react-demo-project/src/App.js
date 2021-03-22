@@ -104,7 +104,7 @@ function App() {
     {/*react组件按需加载*/}
     {/*<ReactLazy></ReactLazy>*/}
     {/*pureComponent的使用*/}
-    {/*<PureComponentTest/>*/}
+    <PureComponentTest/>
     {/*父子组件通信*/}
     {/*<ParentCom></ParentCom>*/}
     {/*useState使用*/}
@@ -114,7 +114,7 @@ function App() {
     {/*useMemo使用*/}
     {/*<UseMemoTest/>*/}
     {/*useCallback使用*/}
-    <UseCallbackTest/>
+    {/*<UseCallbackTest/>*/}
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React,{PureComponent} from 'react';
+import React,{PureComponent,Component} from 'react';
 import {Button,message} from 'antd';
 // import PureComponent from './PureComponent';
 
@@ -22,7 +22,7 @@ export default class PureComponentTest extends PureComponent{
         console.log('App render');
         return (
             <div>
-                <MemoTitle title={this.state.title}/>
+                {/*<MemoTitle title={this.state.title}/>*/}
                 <Title title={this.state.title2.name}/>
                 <Counter number={this.state.number}/>
                 {/*<input ref={inst=>this.amount = inst}/>*/}
@@ -36,12 +36,24 @@ class Counter extends React.PureComponent{
     render(){
         console.log('Counter render');
         return (
-            <p>{this.props.number}</p>
+            <div>
+                <p>{this.props.number}</p>
+                <Cc/>
+            </div>
+
         )
     }
 }
+function Cc(){
+    console.log('cc render');
+    return (
+        <div>
+            cc
+        </div>
+    )
+}
 //!类组件可以用继承PureComponent来优化
-class Title  extends React.PureComponent{
+class Title  extends Component{
     render(){
         console.log('Title render---');
         return (

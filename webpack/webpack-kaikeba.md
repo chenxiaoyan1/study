@@ -362,7 +362,8 @@ new htmlWebpackPlugin({ title: "京东商城",
 	minifyCSS: true // 压缩内联css
 } }),
 ```
-###优化输出质量
+### 优化输出质量
+
 > 优化要输出到线上的代码，减少用户能感知的加载时间
 > 提升代码性能
 
