@@ -1,0 +1,116 @@
+.blueBoldFont{
+    color:#1E8BCF;
+    font-weight: bold;
+}
+.ddaContainer{
+    background-color: #fff;
+}
+.stasticTitle{
+    border-left: 5px solid blue;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+.line{
+    background-color: #F6F6F6;
+    height: 1px;
+}
+.systemStastic,.loginStastic,.stasticChart{
+    padding-top: 10px;
+}
+.systemStastic .left{
+    float:left;
+    background-color: #F5F8FF;
+    border: 1px solid #E2E5EC;
+
+}
+.systemStastic .right{
+    float:right;
+    background-color: #F5F8FF;
+    border: 1px solid #E2E5EC;
+
+}
+.systemStastic .systemStasticItem{
+    width:49%;
+    height: 130px;
+}
+.loginTitle{
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+    font-weight: bold;
+    padding: 5px 0px;
+    border-bottom: 1px solid #E5E8EF;
+    margin-bottom: 20px;
+}
+.systemStasticItem .loginInfo{
+    margin-top:20px;
+}
+.systemStasticItem .loginInfo div{
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+.systemStasticItem .indexCount div{
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.loginStastic{
+    margin-top: 10px;
+    border-top: 0px solid #F6F6F6;
+}
+.loginStastic .dayLoginStastic{
+    float:left;
+    width:49%;
+
+
+}
+.loginStastic .allLoginStastic{
+    float:right;
+    width:49%;
+
+
+}
+.dayLoginStastic .dayLoginStasticContent{
+    width: 100%;
+    height: 225px;
+    margin-top: 10px;
+
+}
+.tableCla table .firstTr{
+    background-color:#EEEEEE
+}
+.tableCla table{
+    text-align:center;
+}
+.tableCla table th{
+    text-align:center;
+}
+.tableCla table td{
+    padding:5px 0px;
+}
+.tableCla table tbody tr:nth-child(odd){
+    background-color:#EDF5F7;
+    border-bottom: 1px solid #EEF0F2;
+    border-top: 1px solid #EEF0F2;
+}
+.allLoginStastic .allLoginStasticContent{
+    width: 100%;
+    height: 225px;
+    margin-top: 10px;
+
+}
+
+.stasticChart{
+    width: 100%;
+
+
+}
+.stasticChart .stasticChartContent{
+    margin-top: 10px;
+    height: 400px;
+    background-color: lightblue;
+}
+

@@ -755,9 +755,24 @@ HOOK就是javascript函数，使用它有 规则：
 
 
 # react 和 vue的异同
-## 插槽写法
+## 相同点
+- 使用virtural DOM+Diff算法
+- 组件化思想
+## 不同点
+### 模板语法的不同
+react通过jsx渲染模板，vue通过扩展的html语法进行渲染。比如react中插值，条件，循环都通过js语法实现，vue是通过指令实现
+### 监听数据变化原理不同
+vue是通过getter，setter劫持通知数据变化
+react通过比较引用的方式进行
+vue使用的响应式数据，而react是不可变数据
+vue改变数据直接赋值
+react需要调用setState方法，用新的state替换旧的state
+### 插槽
 - react写法 组件复合 layout.js main.js
 - vue 写法 slot
+### 组件扩展
+- react有高阶组件来扩展
+- vue是用mixins
 ## vuex和redux
 
 
