@@ -37,6 +37,7 @@ import UseStateTest from "./pages/hook/useState";
 import UseEffectTest from "./pages/hook/useEffect";
 import UseMemoTest from "./pages/hook/useMemo";
 import UseCallbackTest from "./pages/hook/useCallback";
+import MoreLi from "./pages/test/moreli";
 
 
 var HocPage = Hoc(InputCom)
@@ -104,7 +105,7 @@ function App() {
     {/*react组件按需加载*/}
     {/*<ReactLazy></ReactLazy>*/}
     {/*pureComponent的使用*/}
-    <PureComponentTest/>
+    {/*<PureComponentTest/>*/}
     {/*父子组件通信*/}
     {/*<ParentCom></ParentCom>*/}
     {/*useState使用*/}
@@ -115,6 +116,8 @@ function App() {
     {/*<UseMemoTest/>*/}
     {/*useCallback使用*/}
     {/*<UseCallbackTest/>*/}
+    {/*测试页面*/}
+    <MoreLi></MoreLi>
     </div>
   );
 }
