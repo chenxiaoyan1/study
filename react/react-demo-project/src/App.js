@@ -39,6 +39,7 @@ import UseMemoTest from "./pages/hook/useMemo";
 import UseCallbackTest from "./pages/hook/useCallback";
 import MoreLi from "./pages/test/moreli";
 
+import "./pages/import/main"
 
 var HocPage = Hoc(InputCom)
 var theme = {name:"11"}
@@ -117,7 +118,8 @@ function App() {
     {/*useCallback使用*/}
     {/*<UseCallbackTest/>*/}
     {/*测试页面*/}
-    <MoreLi></MoreLi>
+    {/*<MoreLi></MoreLi>*/}
+
     </div>
   );
 }
