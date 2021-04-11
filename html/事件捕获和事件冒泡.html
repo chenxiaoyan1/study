@@ -17,31 +17,28 @@
 <script>
     var d1 = document.getElementById("d1")
     var u1 = document.getElementById("u1")
-    document.body.addEventListener("click",(e)=>{
-
-        console.log("body")
-    },true)
-    d1.addEventListener("click",function(e){
-        console.log("div")
-
-    },true)
-    u1.addEventListener("click",function (e) {
-        console.log("ul")
-        // e.stopPropagation()
-    },true)
-
+    // document.body.addEventListener("click",(e)=>{
+    //     console.log("body")
+    // },true)
+    // d1.addEventListener("click",function(e){
+    //     console.log("div")
+    // },true)
+    // u1.addEventListener("click",function (e) {
+    //     console.log("ul")
+    //     // e.stopPropagation()
+    // },true)
     document.body.addEventListener("click",(e)=>{
         console.log("body")
-
+       // e.stopPropagation()
     },false)
     d1.addEventListener("click",function(e){
         console.log("div")
-        return false;
+       // return false;
+        //e.stopPropagation()
     },false)
     u1.addEventListener("click",function (e) {
-
         console.log("ul")
-
+       // e.stopPropagation()
     },false)
 </script>
 </body>

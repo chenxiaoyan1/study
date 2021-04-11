@@ -29,9 +29,7 @@ function child1(age,sex) {
 var c1 = new child1(122,3)
 console.dir(c1)
 c1.say()
-function child2(name) {
-    this.name = name
-}
+
 //! 继承方式2 利用原型链
 /**
  *利用原型链的向上查找机制实现继承，给child.prototype = new parent()
@@ -43,6 +41,9 @@ function child2(name) {
  * 如果要修改，就会有通过实例对象修改原型对象属性的问题（在下面）,例如当修改原型对象上的引用类型的属性的属性的时候（不是重新赋值）的时候，创造的所有实例对象的这个属性都变了，相互影响
  *
  */
+function child2(name) {
+    this.name = name
+}
 child2.prototype = new parent(12,"d")//
 
 
