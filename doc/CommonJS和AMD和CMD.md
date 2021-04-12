@@ -15,7 +15,13 @@ ES6模块输出是值的引用
 ## CommonJS规范
 ### require.js
 > require.js怎么使用参照https://www.cnblogs.com/chenguangliang/p/5856701.html
+### CommonJS 模块的加载原理
+当遇到require(a)命令的时候就会执行整个a脚本，然后在内存中生成一个对象，对象有一个exports属性，以后需要用到
+这个export属性中就是模块输出的接口，以后用到这个模块的时候就去exports属性上面取值
+同一个CommonJS 模块无论加载多少次，都只运行一次，以后再加载，就取缓存中取值
 
+## ES6 模块加载原理
+当遇到import命令时，不会执行该模块内容，而是生成一个指向该模块的引用，当真正用到该模块导出的内容时能取到值
 ## es6 import export 模块方式
 - es6模块不会缓存运行结果，而是动态的去加载的模块中取值，读出的变量不可以重新赋值（对象可以改变属性，但是不可以重新赋值）
 
@@ -54,4 +60,4 @@ if (condition) {
 
 循环引用问题
 看一下这个文章：https://es6.ruanyifeng.com/#docs/module-loader
-https://juejin.cn/post/6920773247948554248#heading-6
+https://es6.ruanyifeng.com/#docs/module-loader
