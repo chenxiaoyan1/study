@@ -13,6 +13,7 @@ parent.prototype.money = function () {
     console.log("parent money")
 }
 parent.prototype.msg = "12"
+parent.prototype.proArr = []
 function child1(age,sex) {
     /**
      * ! 继承方式1：构造函数方式实现继承，通过call方式,也可以使用apply方式（自我理解就是调用call，或apply将父类执行了一遍）
@@ -147,13 +148,15 @@ function child55(name,age,sex) {
 child55.prototype = Object.create(parent.prototype)
 child55.prototype.constructor = child55
 
-//! 这里不用Object.create ,直接是上面继承方式4 的继承上指定constructor 自我感觉是也可以，没有object.crete方式的中间__protot__对象,也能解决4的constructor问题
+//! 这里不用Object.create ,直接是上面继承方式4 的继承上指定constructor ，这样为什么不可以呢，因为子类的原型对象的属性和从父类那里集成的原型对象属性混在一起了，从数据结构上也不如Object.create的方式好
 child5.prototype = parent.prototype
 child5.prototype.constructor = child5
+child5.prototype.cpro = "dsd"
+child55.prototype.cpro = "dsd"
 let c5 = new child5("c5",22,"girl")
 let c55 = new child55("c55",25,"boy")
 console.log(child5.prototype.__proto__===parent.prototype)//true
-console.dir(c5)
+console.log(c5,c55)
 console.log(c55)
 c5.money()
 console.log(c5.msg)
@@ -205,12 +208,85 @@ function child6(name) {
     parent3.call(this)
     this.name = name
 }
-child6.prototype = Object.assign(child6.prototype,parent.prototype,parent2.prototype,parent3.prototype)
+child6.prototype = Object.create(Object.assign(child6.prototype,parent.prototype,parent2.prototype,parent3.prototype))
 child6.prototype.constructor = child6
-
+child6.prototype.c6 = "c6"
 let c6 = new child6("c6")
 console.log(c6)
 console.log("--------分隔-------------")
+
+/**
+ * ! 原型式继承
+ * 原型式继承首先在obj()函数内部创建一个临时性的构造函数 ，然后将传入的对象作为这个构造函数的原型，最后返回这个临时类型的一个新实例。
+ * 缺点：原型上的引用属性被所有实例共享，一个实例修改，其他的实例的原型上的引用属性也变了
+ *      无法传参，parent的属性值一开始就定了
+ * ES5提供了Object.create()函数，内部就是原型式继承
+ */
+function obj(o){
+    function F(){}
+    F.prototype = o;
+    return new F()
+}
+var parent1 = {
+    name:"tom",
+    age:22,
+    arr:[]
+}
+var c8 = obj(parent1)
+var c9 = obj(parent1)
+console.log(c8)
+console.log(c9)
+c8.arr.push("1")
+console.log(c8)
+console.log(c9)
+c8.age1 = 12
+console.log(c8,c9)
+var c10 = Object.create(parent1)
+console.log(c10)
+
+/**
+ * ! 寄生式继承
+ *
+ * 实现的本质： 给**原型式继承**穿了个马甲而已，看起来比较像继承。同样是基于某个对象或某个信息创建一个对象，然后增强对象，最后返回对象。
+ 缺点:同原型式继承
+ *
+ *
+ */
+function create(o){
+  var f= obj(o);//o的属性会在对象的原型对象身上
+     f.run = function () {//增强对象，该属性会在对象的身上
+             return this.arr;
+         };
+     f.c_age  = "c_age"//增强对象，该属性会在对象的身上
+     return f;
+}
+var c11 = create(parent1)
+console.log(c11)
+
+/**
+ * ! 寄生组合式继承
+ */
+function Child12(c_age){
+    parent.call(this,12,"man")//获得父类构造函数的属性和方法,支持传参
+    this.c_age = c_age
+}
+function initPrototype(parent,child) {
+    let pro  = Object.create(parent.prototype)
+    pro.constructor = parent
+    child.prototype = pro//获得父类原型的属性和方法
+}
+//继承父类原型属性和方法
+initPrototype(parent,Child12)
+// 新增子类原型属性
+Child12.prototype.sayChild=function(){
+    console.log("child prototype function")
+}
+var c12 = new Child12(222)
+var c13 = new Child12(333)
+console.log(c12)
+console.log(c13)
+c12.proArr.push(1)
+console.log(c12,c13)
 
 /**
  * ! es6继承方式
