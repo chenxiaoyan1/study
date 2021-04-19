@@ -38,6 +38,7 @@ import UseEffectTest from "./pages/hook/useEffect";
 import UseMemoTest from "./pages/hook/useMemo";
 import UseCallbackTest from "./pages/hook/useCallback";
 import MoreLi from "./pages/test/moreli";
+import Com from "./pages/函数组件和类组件的区别/different"
 
 import "./pages/import/main"
 
@@ -119,7 +120,8 @@ function App() {
     {/*<UseCallbackTest/>*/}
     {/*测试页面*/}
     {/*<MoreLi></MoreLi>*/}
-
+    {/*函数组件和类组件的区别*/}
+    <Com></Com>
     </div>
   );
 }

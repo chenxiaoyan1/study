@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .max{
+            width:200px;
+            height: 200px;
+            background-color: lightpink;
+        }
+        .middle{
+            width: 100px;
+            height: 100px;
+            background-color: lime;
+        }
+        .min{
+            width: 50px;
+            height: 50px;
+            background-color: lightseagreen;
+        }
+    </style>
 </head>
 <body>
 <h1>正常来说，先执行捕获事件再执行冒泡事件</h1>
 <h3>此例子来实现先冒泡再捕获</h3>
-    <button id="btn">click</button>
+    <button id="btn">方式1</button>
+<div class="max" id="max">
+    <div class="middle" id="middle">
+        <div class="min" id="min" Onn = "ds">方式2</div>
+    </div>
+</div>
 
+
+<div id="div"></div>
 </body>
 <script src="实现事件先冒泡再捕获.js"></script>
+<script src="实现事件先冒泡再捕获--方式2.js"></script>
 </html>
