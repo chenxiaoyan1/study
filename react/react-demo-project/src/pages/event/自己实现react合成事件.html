@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <div id="parent">
+        <p id="child">自己实现react合成事件</p>
+    </div>
+</div>
+
+</body>
+<script>
+    var parent = document.getElementById("parent")
+    var child = document.getElementById("child")
+    var root = document.getElementById("root")
+    parent.addEventListener("click",function(){
+        console.log("父元素原生捕获")
+    },true)
+    parent.addEventListener("click",function(){
+        console.log("父元素原生冒泡")
+    })
+    child.addEventListener("click",function(){
+        console.log("子元素原生捕获")
+    },true)
+    child.addEventListener("click",function(){
+        console.log("子元素原生冒泡")
+    })
+    document.addEventListener("click",function(){
+        console.log("document原生捕获")
+    },true)
+    document.addEventListener("click",function(){
+        console.log("document原生冒泡")
+    })
+    parent.onclick=function(){
+        console.log("父元素React事件冒泡")
+    }
+    child.onclick=function(){
+        console.log("子元素React事件冒泡")
+    }
+    parent.onClickCapture=function(){
+        console.log("子元素React事件捕获")
+    }
+    child.onClickCapture=function(){
+        console.log("子元素React事件捕获")
+    }
+</script>
+</html>

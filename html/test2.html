@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #c{
+            height: 100px;
+            width: 100px;
+            background-color: lightseagreen;
+            border-bottom: 20px solid lightpink;
+        }
+        .cc{
+            display: none;
+        }
+        #c:hover .cc{
+            display:block;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="c">
+ccccc
+    <div id="d" class="cc">ddsd</div>
+</div>
+
+</body>
+<script>
+    let ca = document.getElementById("c")
+    ca.addEventListener("click",function(){
+
+    },true)
+</script>
+</html>

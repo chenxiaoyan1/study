@@ -41,6 +41,8 @@ import MoreLi from "./pages/test/moreli";
 import Com from "./pages/函数组件和类组件的区别/different"
 
 import "./pages/import/main"
+import Test from "./pages/purecomponent/purecomponent";
+import EventCom2 from "./pages/event/event";
 
 var HocPage = Hoc(InputCom)
 var theme = {name:"11"}
@@ -121,7 +123,10 @@ function App() {
     {/*测试页面*/}
     {/*<MoreLi></MoreLi>*/}
     {/*函数组件和类组件的区别*/}
-    <Com></Com>
+    {/*<Com></Com>*/}
+    {/*<Test/>*/}
+    {/*React合成事件和原生事件*/}
+    <EventCom2/>
     </div>
   );
 }
