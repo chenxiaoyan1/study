@@ -50,5 +50,5 @@ class EventCom2 extends React.Component{
         );
     }
 }
-
+// !
 export default EventCom2

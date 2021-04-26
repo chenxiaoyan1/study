@@ -16,6 +16,28 @@
     var parent = document.getElementById("parent")
     var child = document.getElementById("child")
     var root = document.getElementById("root")
+    root.addEventListener("click",event=>{dispatchEvent(event,false)},false)
+    root.addEventListener("click",event=>{dispatchEvent(event,true)},true)
+    function dispatchEvent(event,useCapture){
+        let paths = []
+        let current = event.target
+        while(current){
+            paths.push(current)
+            current = current.parentNode
+        }
+        if(useCapture){
+            for(let i=paths.length-1;i>=0;i--){
+                let handler = paths[i].onClickCapture
+                handler&&handler()
+            }
+        }
+        if(!useCapture) {
+            for(let i=0;i<paths.length;i++){
+                let handler = paths[i].onClick
+                handler&&handler()
+            }
+        }
+    }
     parent.addEventListener("click",function(){
         console.log("父元素原生捕获")
     },true)
@@ -28,20 +50,20 @@
     child.addEventListener("click",function(){
         console.log("子元素原生冒泡")
     })
-    document.addEventListener("click",function(){
-        console.log("document原生捕获")
-    },true)
-    document.addEventListener("click",function(){
-        console.log("document原生冒泡")
-    })
-    parent.onclick=function(){
+    // document.addEventListener("click",function(){
+    //     console.log("document原生捕获")
+    // },true)
+    // document.addEventListener("click",function(){
+    //     console.log("document原生冒泡")
+    // })
+    parent.onClick=function(){
         console.log("父元素React事件冒泡")
     }
-    child.onclick=function(){
+    child.onClick=function(){
         console.log("子元素React事件冒泡")
     }
     parent.onClickCapture=function(){
-        console.log("子元素React事件捕获")
+        console.log("父元素React事件捕获")
     }
     child.onClickCapture=function(){
         console.log("子元素React事件捕获")

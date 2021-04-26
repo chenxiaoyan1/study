@@ -43,6 +43,7 @@ import Com from "./pages/函数组件和类组件的区别/different"
 import "./pages/import/main"
 import Test from "./pages/purecomponent/purecomponent";
 import EventCom2 from "./pages/event/event";
+import DialogTest from "./pages/event/Dialog";
 
 var HocPage = Hoc(InputCom)
 var theme = {name:"11"}
@@ -127,6 +128,7 @@ function App() {
     {/*<Test/>*/}
     {/*React合成事件和原生事件*/}
     <EventCom2/>
+    {/*<DialogTest/>*/}
     </div>
   );
 }
