@@ -44,6 +44,8 @@ import "./pages/import/main"
 import Test from "./pages/purecomponent/purecomponent";
 import EventCom2 from "./pages/event/event";
 import DialogTest from "./pages/event/Dialog";
+import {HocDemo1,HocDemo2,HocInput,Demo} from "./pages/hoc_demo/hoc"
+import MyComponent from "./pages/hooks原理/hooks原理"
 
 var HocPage = Hoc(InputCom)
 var theme = {name:"11"}
@@ -110,7 +112,7 @@ function App() {
     {/*react组件按需加载*/}
     {/*<ReactLazy></ReactLazy>*/}
     {/*pureComponent的使用*/}
-    {/*<PureComponentTest/>*/}
+    <PureComponentTest/>
     {/*父子组件通信*/}
     {/*<ParentCom></ParentCom>*/}
     {/*useState使用*/}
@@ -127,10 +129,18 @@ function App() {
     {/*<Com></Com>*/}
     {/*<Test/>*/}
     {/*React合成事件和原生事件*/}
-    <EventCom2/>
+    {/*<EventCom2/>*/}
     {/*<DialogTest/>*/}
+    {/*HOC 相关*/}
+    {/*  <HocDemo1 className='demo1'></HocDemo1>*/}
+    {/*  <HocDemo2 ></HocDemo2>*/}
+        {/*<Demo></Demo>*/}
+      {/*<HocInput></HocInput>*/}
+    {/*  */}
+    {/*<MyComponent></MyComponent>*/}
     </div>
   );
 }
+
 
 export default App;

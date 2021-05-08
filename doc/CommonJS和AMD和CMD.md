@@ -6,19 +6,19 @@ node.js的模块系统是参照CommonJS 规范实现的，CommonJS 主要是为�
 ，为了适合前端，AMD(异步模块定义)和CMD模范出现，他们都是异步加载的，主要是为了前端js的表现制定规范；RequireJS实现了AMD规范，
 sea.js实现了CMD规范；之后ES2015发布之后又出现了新的模块引入方式ES6 module，ES6加载模块并没有指定同步或异步，
 如何加载ES6定义的模块取决于代码的运行环境
+
 ## CommonJS和ES6模块的差异
 - CommonJS 模块输出是一个值的拷贝，也就是说一旦输出一个值，模块内部的变化影响不到这个值；
 ES6模块输出是值的引用
 - CommonJS 模块是运行时加载，ES6模块是编译时执行
-- CommonJS 模块的require（）是同步加载模块，es6模块的import是异步加载
+- ~~CommonJS 模块的require（）是同步加载模块，es6模块的import是异步加载~~
 - CommonJS 模块顶层的this指向当前模块，ES6模块顶层的this指向undefined
 ## CommonJS规范
 ### require.js
 > require.js怎么使用参照https://www.cnblogs.com/chenguangliang/p/5856701.html
 ### CommonJS 模块的加载原理
-当遇到require(a)命令的时候就会执行整个a脚本，然后在内存中生成一个对象，对象有一个exports属性，以后需要用到
-这个export属性中就是模块输出的接口，以后用到这个模块的时候就去exports属性上面取值
-同一个CommonJS 模块无论加载多少次，都只运行一次，以后再加载，就取缓存中取值
+当遇到require(a)命令的时候就会执行整个a脚本，第一次加载的时候在内存中生成一个对象，对象有一个exports属性，以后需要用到这个export属性中就是模块输出的接口，以后用到这个模块的时候就去exports属性上面取值
+同一个CommonJS 模块无论加载多少次，都只运行一次，以后再加载，就去缓存中取值
 
 ## ES6 模块加载原理
 当遇到import命令时，不会执行该模块内容，而是生成一个指向该模块的引用，当真正用到该模块导出的内容时能取到值

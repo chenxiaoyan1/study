@@ -1,4 +1,6 @@
 # react
+## jsx
+jsx经过babel编译之后变成React.createElement()，所以使用jsx的时候要import Rreact from 'react'
 
 ## HOC 高阶组件
 - 参数为组件，返回为一个新组件的函数
@@ -200,12 +202,12 @@ export default DialogPortal
 
 ## refs
 > refs提供一种方式，允许访问DOM节点或在render中方法中创建的React元素
-- React.createRef()  
-原生的DOM标签或class方式声明的组件,不适用于function方式定义的组件
-- React.forwardRef 函数式组件
-- hook方式
-- 回调函数方式
-具体使用方法见src/pages/test/refs-demo.js
+> - React.createRef()  
+> 原生的DOM标签或class方式声明的组件,不适用于function方式定义的组件
+> - React.forwardRef 函数式组件
+> - hook方式
+> - 回调函数方式
+> 具体使用方法见src/pages/test/refs-demo.js
 ```js
 import React,{Component,useRef} from "react";
 
@@ -381,7 +383,7 @@ class MyClass extends React.Component {
 > 4. action提交到reducer函数⾥，根据传入的action的type， 返回新的state
 > 5. subscribe监听数据的变化
 > 注意：
->reducer是一个纯函数，不要在reducer中做一下操作
+>reducer是一个纯函数，不要在reducer中做以下操作
 > 1）修改传入参数
 > 2)执行有副作用的操作，例如api请求和路由跳转
 >3）调用非纯函数 例如Date.now()或Math.rendom()
@@ -643,8 +645,7 @@ Eﬀect Hook 可以让你在函数组件中执⾏副作用操作。 数据获取
 - useEffect 做了什么？
  通过使用这个 Hook，你可以告诉 React 组件需要在渲染后执行某些操作
 - useEffect 会在每次渲染后都执行吗？ 
-是的，默认情况下，所有useEffect在第一次渲染之后和每次更新之后都会执行,这样有时会浪费性能，这时用到useEffect的
-第二个参数进行控制useEffect什么时候执行
+是的，默认情况下，所有useEffect在第一次渲染之后和每次更新之后都会执行,这样有时会浪费性能，这时用到useEffect的第二个参数进行控制useEffect什么时候执行
 ```js
   //! useEffect 第一个参数必须，第二个参数非必须，
 //! 第一个参数相当于class组件的componentDidMount 和 componentDidUpdate生命周期函数
@@ -660,8 +661,7 @@ Eﬀect Hook 可以让你在函数组件中执⾏副作用操作。 数据获取
     },[count])
 ```
 ### useMemo
-把“创建”函数和依赖项数组作为参数传入 useMemo ，
-它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进⾼开销的计算
+把“创建”函数和依赖项数组作为参数传入 useMemo ，它仅会在某个依赖项改变时才重新计算 memoized 值。这种优化有助于避免在每次渲染时都进⾼开销的计算
 
 
 把内联回调函数及依赖项数组作为参数传入 useCallback ，它将返回该回调函数的 memoized 版本，

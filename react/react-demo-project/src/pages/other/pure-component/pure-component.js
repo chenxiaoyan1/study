@@ -22,9 +22,11 @@ export default class PureComponentTest extends PureComponent{
         console.log('App render');
         return (
             <div>
-                {/*<MemoTitle title={this.state.title}/>*/}
-                <Title title={this.state.title2.name}/>
-                <Counter number={this.state.number}/>
+                <MemoTitle title={this.state.title}/>
+                <Title2/>
+
+                {/*<Title title={this.state.title2.name}/>*/}
+                {/*<Counter number={this.state.number}/>*/}
                 {/*<input ref={inst=>this.amount = inst}/>*/}
                 <input ref={this.myRef}/>
                 <button onClick={this.add}>+</button>
