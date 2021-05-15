@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="inputId">
+<button id="btn">click</button>
+</body>
+<script>
+    let input = document.getElementById("btn")
+    input.onclick=function () {
+        console.log("onclick")
+    }
+    input.onfocus=function () {
+        console.log("onfocus")
+    }
+    input.onmousedown=function () {
+        console.log("onmousedown")
+    }
+    input.onmouseenter=function () {
+        console.log("onmouseenter")
+    }
+</script>
+</html>

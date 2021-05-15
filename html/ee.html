@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- 会依次执行 button li ul -->
+<ul onfocus="console.log('ul')">
+    <li onfocus="console.log('li')">
+        <button onfocus="console.log('button')">点击</button>
+    </li>
+</ul>
+<script>
+    window.addEventListener('click', function (e) {
+        alert('window')
+    })
+    document.addEventListener('click', function (e) {
+        alert('document')
+    })
+</script>
+
+</body>
+</html>

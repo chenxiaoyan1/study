@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+/* ! 按照这个顺序来*/
+        a{
+            color: yellow;
+        }
+        a:link{
+            color: pink;
+        }
+        a:visited{ /* visited在hover后面，这样的话hover事件就失效了 */
+            color: red;
+            text-decoration: none;
+        }
+        a:hover{
+            color: green;
+            text-decoration: none;
+        }
+        a:active{
+            color: #00d8ff;
+        }
+
+    </style>
+</head>
+<body>
+<a href="" id="aId">click</a>
+
+</body>
+<script>
+
+</script>
+</html>
