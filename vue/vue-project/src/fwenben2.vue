@@ -54,6 +54,9 @@
     }
 </script>
 <style>
+    .tinymce{
+        background-color: red;
+    }
     .tox-tinymce-aux {
         z-index: 10000;
     }

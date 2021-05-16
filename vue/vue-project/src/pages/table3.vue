@@ -66,4 +66,9 @@
         }
     }
 </script>
+<style scoped>
+    .tableBox{
+        background-color: blue;
+    }
+</style>
 

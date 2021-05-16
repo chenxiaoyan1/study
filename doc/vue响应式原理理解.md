@@ -130,7 +130,9 @@ vue._data.text = '123'; // in watcher update /n in get
 
 利用画图来表示上面代码：
 
-![avatar](F:\github\study\doc\source\vue响应式原理流程.png)
+
+
+![avatar](\source\vue响应式原理流程.png)
 
 总结：
 先来几个帮助理解的注意点:

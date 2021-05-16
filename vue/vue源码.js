@@ -1877,6 +1877,7 @@
         };
     }
     function nextTick(cb, ctx) {
+        debugger
         var _resolve;
         callbacks.push(function () {
             if (cb) {

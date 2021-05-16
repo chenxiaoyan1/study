@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../vue源码.js"></script>
+</head>
+<body>
+<div id="app">
+    <span id="str">{{name}}</span>
+    <button v-on:click="handleClick">click</button>
+    <button v-on:click="handleClick2">click2</button>
+</div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:"title"//这个key要全部小写，包含大写字母会有问题
+        },
+        methods:{
+            handleClick:function(){
+                this.name = "class"
+
+                this.$nextTick(function(){
+                    alert(document.getElementById("str").innerHTML)//class1
+                })
+
+
+
+            },
+            handleClick2:function () {
+                this.name = "class2"
+                this.$nextTick(function () {
+                    alert(document.getElementById("str").innerHTML)
+                })
+            }
+        }
+
+    })
+</script>
+</html>
