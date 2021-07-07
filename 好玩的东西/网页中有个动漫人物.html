@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body style="background-color: #ccc">
+
+
+<script type="text/javascript"   src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.0.min.js"></script>
+<script type="text/javascript"   src="https://files.cnblogs.com/files/liuzhou1/L2Dwidget.min.js"></script>
+
+<script type="text/javascript">
+    //实现一个在网页中有一个动漫人物的功能
+    //想要更换人物的话要修改model的jsonPath中的两个地方，换成对应人物的即可
+    //参考链接：https://blog.csdn.net/DengZY926/article/details/111588627
+    //https://github.com/xiazeyu/live2d-widget-models
+    L2Dwidget.init({
+        "display": {
+            "superSample": 2,
+            "width": 200,   // 宽度
+            "height": 400,  // 高度
+            "position": "right",  // 模型位置
+            "hOffset": 0,  // 纵向偏移
+            "vOffset": 0   // 横向偏移
+        },
+        "mobile": {
+            "show": false,  // 是否在移动设备上显示
+        },
+        "model": {
+            jsonPath: "https://unpkg.com/live2d-widget-model-wanko@1.0.5/assets/wanko.model.json",
+            scale: 1
+        },
+    });
+
+</script>
+
+</body>
+</html>
